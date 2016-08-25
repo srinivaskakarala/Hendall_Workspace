@@ -1,0 +1,29 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui"
+	>
+	<h:form id="validationForm">
+		<p:spacer height="10"></p:spacer>
+		<h:panelGrid columns="2" columnClasses="width30, width70">
+			<p:dataTable var="validation"
+				value="#{surveyQuestionsBean.validationsList}">
+				<p:column headerText="Question" >
+					<p:outputLabel value="#{validation.question}"></p:outputLabel>
+					
+				</p:column>
+				<p:column headerText="Error" >
+					
+					<p:commandLink  action="#{surveyQuestionsBean.jumpToErrorSection()}" value="#{validation.message}"  update=":surveryQuestionForm"> 
+						<f:setPropertyActionListener value="#{validation.sectionIndex}" target="#{surveyQuestionsBean.errorSection}" ></f:setPropertyActionListener>
+						<f:setPropertyActionListener value="#{validation.errorMessageCompId}" target="#{surveyQuestionsBean.errorId}" ></f:setPropertyActionListener>
+						
+					</p:commandLink>
+				</p:column>
+			</p:dataTable>
+
+		</h:panelGrid>
+	</h:form>
+</ui:composition>

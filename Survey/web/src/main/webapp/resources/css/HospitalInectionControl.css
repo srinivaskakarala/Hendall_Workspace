@@ -1,0 +1,264 @@
+.ui-state-disabled, .ui-widget-content .ui-state-disabled,
+	.ui-widget-header .ui-state-disabled {
+	background-image: none;
+	opacity: 0.67 !important;
+}
+
+.versionClass {
+	left: 84% !important;
+	position: relative !important;
+	top: -74px !important;
+}
+
+.jsonVersionClass {
+	left: 90% !important;
+	position: relative !important;
+	top: -74px !important;
+}
+
+.styleForDivTextArea {
+	height: 164px;
+	left: 15% !important;
+	position: relative !important;
+	top: -40px !important;
+	width: 40% !important
+}
+
+.divStyelForObesrvation {
+	left: 1% !important;
+	position: relative !important;
+	top: 25px !important;
+	width: 50% !important
+}
+
+.divStyelForObesrvation2 {
+	left: 1% !important;
+	position: relative !important;
+	top: -93px !important;
+	width: 50% !important
+}
+
+.styleForDivRadio {
+	left: 1% !important;
+	position: relative !important;
+	top: 70px !important;
+}
+
+.styleForDivRadio_104700 {
+	left: 1% !important;
+	position: relative !important;
+	top: -61px !important;
+	width: 80% !important
+}
+
+.styleForDivRadio_88600 {
+	left: 0% !important;
+	position: relative !important;
+	top: -68px !important;
+	width: 30% !important
+}
+
+.styleForDivRadio_123710 {
+	left: -10px !important;
+	position: relative !important;
+	top: -59px !important;
+	width: 80% !important
+}
+
+.styleForDivRadio_147710 {
+	left: -10px !important;
+	position: relative !important;
+	top: -59px !important;
+	width: 80% !important
+}
+
+.styleForDivRadio_141710 {
+	left: -10px !important;
+	position: relative !important;
+	top: -59px !important;
+	width: 80% !important
+}
+
+.styleForDivRadio_155710 {
+	left: -10px !important;
+	position: relative !important;
+	top: -59px !important;
+	width: 80% !important
+}
+
+.styleForDivRadio_134710 {
+	left: -10px !important;
+	position: relative !important;
+	top: -59px !important;
+	width: 80% !important
+}
+.styleForDivRadio_182950 {
+	left: -10px !important;
+	position: relative !important;
+	top: -59px !important;
+	width: 80% !important
+}
+.styleForDivRadio_191950 {
+	left: -10px !important;
+	position: relative !important;
+	top: -59px !important;
+	width: 80% !important
+}
+
+.styleForDivRadio_191950 {
+	left: -10px !important;
+	position: relative !important;
+	top: -59px !important;
+	width: 80% !important
+}
+
+.styleForDivRadio_198950 {
+	left: -10px !important;
+	position: relative !important;
+	top: -59px !important;
+	width: 80% !important
+}
+
+
+.styleForDivRadio_206900 {
+	left: -10px !important;
+	position: relative !important;
+	top: -59px !important;
+	width: 80% !important
+}
+
+.styleForDivCheckBox {
+	left: 1% !important;
+	position: relative !important;
+	top: 70px !important;
+}
+
+.styleForDivRadio_162800 {
+	left: 1% !important;
+	position: relative !important;
+	top: -59px !important;
+	width: 14%;
+	width: 80% !important
+}
+
+
+.styleForDivInputText_11550 label {
+    color: #000000 !important;
+    font-size: 15px !important;
+    font-weight: bold !important;
+    position: relative !important;
+    top: -8px !important;
+}
+
+.styleForTagLinks {
+	height: 14px;
+	left: 65% !important;
+	position: relative !important;
+	top: 75px !important;
+	width: 35% !important;
+}
+
+.styleForTagLinks_5 {
+	height: 14px !important;
+	left: 65% !important;
+	position: relative !important;
+	top: 100px !important;
+	width: 35% !important;
+}
+
+.styleForTagLinks a {
+	color: #0057af !important;
+}
+
+.styleForDivRemoveButton {
+	left: 65% !important;
+	position: relative !important;
+	top: 15px !important;
+}
+
+.messageStyle {
+	left: 15% !important;
+	position: relative !important;
+	top: -22px !important;
+	width: 50%;
+}
+
+.styleForDivRemoveButton button {
+	position: absolute !important;
+}
+
+.styleForDivAddButton {
+	position: relative !important;
+	top: 10px !important;
+	padding: 10px !important;
+}
+
+.styleForDivTextArea_SubmissionPage {
+	height: 164px;
+	left: 100px !important;
+	position: relative !important;
+	top: -22px !important;
+	width: 710px;
+}
+
+.styleForDivTextArea_207000 {
+	height: 164px;
+	left: 0px !important;
+	position: relative !important;
+	top: 22px !important;
+	width: 100%;
+}
+
+.styleForDivTextArea_162900 {
+	height: 164px;
+	left: 13px !important;
+	position: relative !important;
+	top: 3px !important;
+	width: 100%;
+}
+
+.styleForDivTextArea_-1 {
+	height: 164px;
+	left: -170px !important;
+	position: relative !important;
+	top: 54px !important;
+	width: 710px;
+}
+
+.loginGrid {
+	position: relative !important;
+}
+
+.loginPanel {
+	left: 600px !important;
+	position: relative !important;
+	top: 197px !important;
+}
+
+.notesSubmissionsPageStyle {
+	left: 2px !important;
+	position: relative !important;
+	top: 3px !important;
+}
+
+.styleForDivTextArea_SubmissionPage {
+	left: 45px !important;
+	position: relative !important;
+}
+
+.styleForEmailAddrsLabel_SubmissionsPage {
+	left: 0 !important;
+	position: relative !important;
+	top: 16px !important;
+}
+
+.styleForEmailAddrsInputTxt_SubmissionsPage {
+	left: 157px !important;
+	position: relative !important;
+	top: -8px !important
+}
+
+.pageHeaderCenterAlignment {
+	text-align: center !important;
+	position: relative !important;
+}

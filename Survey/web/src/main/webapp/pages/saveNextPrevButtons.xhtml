@@ -1,0 +1,62 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui"
+	>
+
+
+	<h:panelGrid columns="3" id="buttonsGrid_#{id1}">
+		
+		<p:outputPanel id="saveButton_#{id1}" styleClass="styleSaveButtonDiv">
+			<p:commandButton action="#{surveyQuestionsBean.save}" value="Save "
+				rendered="#{!surveyQuestionsBean.readOnlyMode}"
+				oncomplete="$('.ui-layout-unit-content').animate({scrollTop: 10}, 0);"
+				styleClass="myButton3" update="surveyQuestionPanldGrid"></p:commandButton>
+			<!-- <p:defaultCommand target="saveButton_footer" /> -->
+
+			<p:commandButton id="Approved_#{id1}" value="Approve "
+				action="viewMySurveys.jsf"
+				rendered="#{userSession.currentSurveyStatus=='Pending Review'}"
+				styleClass="myButton3" update="surveyQuestionPanldGrid">
+				<p:ajax listener="#{surveyQuestionsBean.approveOrReject}"></p:ajax>
+			</p:commandButton>
+
+			<p:commandButton action="viewMySurveys.jsf" id="Rejected_#{id1}"
+				value="Reject "
+				rendered="#{userSession.currentSurveyStatus=='Pending Review'}"
+				styleClass="myButton3" update="surveyQuestionPanldGrid">
+				<p:ajax listener="#{surveyQuestionsBean.approveOrReject}"></p:ajax>
+			</p:commandButton>
+		</p:outputPanel>
+
+		<p:outputPanel id="prevButton_#{id1}"
+			styleClass="styleForPrevButtonDiv">
+			<p:commandButton action="#{surveyQuestionsBean.prevPage}"
+				styleClass="myButton3"
+				rendered="#{surveyQuestionsBean.pageIndex gt 1}"
+				value="Previous page "
+				oncomplete="$('.ui-layout-unit-content').animate({scrollTop: 10}, 0);"
+				update="saveButton_#{id1}, nextButton_#{id1},prevButton_#{id1},nextButton_#{id2},prevButton_#{id2},  :surveryQuestionForm:surveyQuestionPanldGrid"></p:commandButton>
+		</p:outputPanel>
+
+		<p:outputPanel id="nextButton_#{id1}"
+			styleClass="styleForNextButtonDiv">
+			<p:commandButton action="#{surveyQuestionsBean.nextPage}"
+				styleClass="myButton3"
+				oncomplete="$('.ui-layout-unit-content').animate({scrollTop: 10}, 0);"
+				rendered="#{surveyQuestionsBean.pageIndex lt surveyQuestionsBean.masterSurveyQuestionSectionList.size()}"
+				value="Next page "
+				update="saveButton_#{id1}, nextButton_#{id1},prevButton_#{id1} ,nextButton_#{id2},prevButton_#{id2},  :surveryQuestionForm:surveyQuestionPanldGrid"></p:commandButton>
+
+			<p:commandButton action="#{surveyQuestionsBean.submit}"
+				styleClass="myButton3" value="Submit "
+				rendered="#{surveyQuestionsBean.pageIndex == surveyQuestionsBean.masterSurveyQuestionSectionList.size() and !surveyQuestionsBean.readOnlyMode }"
+				update=" surveyQuestionPanldGrid"></p:commandButton>
+		</p:outputPanel>
+
+
+
+	</h:panelGrid>
+</ui:composition>

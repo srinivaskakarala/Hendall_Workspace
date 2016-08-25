@@ -1,0 +1,18 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui"
+	>
+
+
+		<h:panelGrid  style="width:100%" columns="2"  columnClasses="width80, width20" >
+			<p:menubar style="border:none !important" styleClass="menuStyle"
+				model="#{menuModel}">
+			</p:menubar>
+			<p:inputText id="search"  style="width:90%"></p:inputText>
+			<p:watermark value="Search" for="search"></p:watermark>
+		</h:panelGrid>
+	
+</ui:composition>

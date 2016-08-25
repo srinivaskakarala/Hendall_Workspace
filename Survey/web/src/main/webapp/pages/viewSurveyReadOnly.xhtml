@@ -1,0 +1,233 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui"
+	
+	template="/templates/masterLayout.xhtml">
+
+	<ui:define name="pageTitle">Main Page</ui:define>
+	<ui:define name="menu">
+		<ui:include src="/pages/menu.xhtml">
+
+			<ui:param name="menuModel" value="#{surveyQuestionsBean.menuModel}" />
+
+		</ui:include>
+	</ui:define>
+	<ui:define name="content">
+
+
+
+
+			<ui:include src="saveNextPrevButtons.xhtml">
+				<ui:param name="id1" value="header" />
+				<ui:param name="id2" value="footer" />
+			</ui:include>
+
+			<h:panelGrid id="surveyQuestionPanldGrid" style="width:100%">
+				<p:messages globalOnly="true">
+				</p:messages>
+				<p:panel id="surveyNameIdPanel" styleClass="sectionPanel"
+					rendered="#{surveyQuestionsBean.pageIndex == 1}">
+					<p:outputPanel id="surveyNameId"
+						styleClass="pageHeaderCenterAlignment">
+						<p:outputLabel id="surveyName"
+							value="#{surveyQuestionsBean.surveyQuestionSectionList[0].surveyName}"
+							rendered="#{surveyQuestionsBean.surveyQuestionSectionList[0].instructions ne ''}"
+							styleClass="h2" escape="false"></p:outputLabel>
+
+					</p:outputPanel>
+				</p:panel>
+
+				<div id="surveyNameInst">
+					<p:panel id="surveyStatePanel" styleClass="sectionPanel"
+						rendered="#{surveyQuestionsBean.pageIndex == 1}">
+						<p:outputLabel id="surveyNameInstLabel"
+							value="#{surveyQuestionsBean.surveyQuestionSectionList[0].instructions}"
+							rendered="#{surveyQuestionsBean.surveyQuestionSectionList[0].instructions ne ''}"
+							escape="false"></p:outputLabel>
+					</p:panel>
+				</div>
+
+
+
+				<p:panel styleClass="sectionPanel"
+					rendered="#{surveyQuestionsBean.pageIndex lt surveyQuestionsBean.masterSurveyQuestionSectionList.size()+1}">
+
+
+
+					<ui:repeat id="sectionLoop"
+						value="#{surveyQuestionsBean.surveyQuestionSectionList}"
+						var="section" varStatus="sectionIndex">
+						<p:outputPanel id="sectionPanel">
+
+
+							<p:outputLabel id="sectionId" value="#{section.sectionTitle}"
+								styleClass="h2" escape="false"></p:outputLabel>
+
+							<br />
+							<br />
+							<ui:repeat id="questionAnswerLoop" varStatus="questionIndex"
+								value="#{section.surveyQuestionAnswerList}" var="questionAnswer">
+
+								<p:outputLabel id="questionId" styleClass="h4"
+									value="#{questionAnswer.questionText}" escape="false"></p:outputLabel>
+
+
+								<ui:repeat id="answerLoop" value="#{questionAnswer.answersList}"
+									var="answer" varStatus="answerIndex">
+									<p:outputPanel id="Test12134" styleClass="styleForDivInputText"
+										rendered="#{answer.htmlControlType=='textbox'  and answer.defaultVisible}">
+
+										<div id="#{answer.htmlControlId}"
+											class="styleForDivInputText_#{answer.htmlControlId} ">
+											<p:outputLabel value="#{answer.htmlControlText}"
+												rendered="#{answer.htmlControlType=='textbox' and answer.htmlControlText!=null}"></p:outputLabel>
+											<p:inputText id="answerInputText" disabled="true"
+												styleClass="styleForInputText_#{answer.htmlControlId}"
+												value="#{answer.answer}"
+												rendered="#{answer.htmlControlType=='textbox'}"></p:inputText>
+										</div>
+										<p:watermark for="answerInputText" value="Notes here"
+											id="watermarkInputText"
+											rendered="#{answer.htmlControlType=='textbox'}" />
+									</p:outputPanel>
+									<p:outputPanel styleClass="styleForDivNumberText"
+										rendered="#{answer.htmlControlType=='number'  and answer.defaultVisible}">
+										<p:outputLabel value="#{answer.htmlControlText}"
+											rendered="#{answer.htmlControlType=='number' and answer.htmlControlText!=null}"></p:outputLabel>
+										<div id="#{answer.htmlControlId}"
+											class="styleForDivNumber_#{answer.htmlControlId} ">
+											<p:inputText id="answerInputNumber" value="#{answer.answer}" disabled="true"
+												rendered="#{answer.htmlControlType=='number'}"
+												styleClass="styleForNumber_#{answer.htmlControlId}"></p:inputText>
+
+											<p:watermark for="answerInputNumber" value="Notes here"
+												id="watermarkInputNumber"
+												rendered="#{answer.htmlControlType=='number'}" />
+										</div>
+									</p:outputPanel>
+									<p:outputPanel styleClass="styleDivForCalendar"
+										rendered="#{answer.htmlControlType=='date'  and answer.defaultVisible}">
+										<p:outputLabel value="#{answer.htmlControlText}"
+											rendered="#{answer.htmlControlType=='date' and answer.htmlControlText!=null}"></p:outputLabel>
+										<div id="#{answer.htmlControlId}"
+											class="styleForDivCalendar_#{answer.htmlControlId} ">
+											<p:calendar rendered="#{answer.htmlControlType=='date'}" disabled="true"
+												styleClass="styleForDivCalendar_#{answer.htmlControlId}"></p:calendar>
+										</div>
+									</p:outputPanel>
+
+									<p:outputPanel styleClass="styleForDivRadio"
+										rendered="#{answer.htmlControlType=='radio'  and answer.defaultVisible}">
+										<div id="#{answer.htmlControlId}"
+											class="styleForDivRadio_#{answer.htmlControlId}">
+
+											<p:selectOneRadio id="radioID" disabled="true"
+												styleClass="styleForRadio_#{answer.htmlControlId}, h4"
+												rendered="#{answer.htmlControlType=='radio'}"
+												value="#{answer.answer}" layout="pageDirection">
+												<f:selectItems var="options"
+													styleClass="#{answer.htmlControlId}_#{options.key} testClass"
+													value="#{answer.htmlOptions}" itemLabel="#{options.value}"
+													itemValue="#{options.key}"></f:selectItems>
+											</p:selectOneRadio>
+
+										</div>
+									</p:outputPanel>
+
+									<p:outputPanel styleClass="styleForDivSelect"
+										rendered="#{answer.htmlControlType=='select'   and answer.defaultVisible}">
+										<div id="#{answer.htmlControlId}"
+											class="styleForDivSelect_#{answer.htmlControlId} ">
+
+											<p:selectOneMenu value="#{answer.answer}" id="Select" disabled="true"
+												rendered="#{answer.htmlControlType=='select'}"
+												styleClass="styleForSelect_#{answer.htmlControlId}"
+												layout="pageDirection">
+												<p:ajax event="change"
+													listener="#{surveyQuestionsBean.processDependentDropDowns}"
+													update=":surveryQuestionForm:surveyQuestionPanldGrid"></p:ajax>
+												<f:selectItems value="#{answer.htmlOptions}" var="options"
+													itemLabel="#{options.value}" itemValue="#{options.key}"></f:selectItems>
+											</p:selectOneMenu>
+										</div>
+									</p:outputPanel>
+									<p:outputPanel styleClass="styleForDivCheckBox"
+										rendered="#{answer.htmlControlType=='checkbox'  and answer.defaultVisible}">
+										<div id="#{answer.htmlControlId}"
+											class="styleForDivCheckBox_#{answer.htmlControlId} ">
+
+											<p:selectManyCheckbox disabled="true"
+												styleClass="styleForCheckbox_#{answer.htmlControlId}"
+												value="#{answer.answersList}"
+												rendered="#{answer.htmlControlType=='checkbox'}"
+												layout="pageDirection">
+
+												<f:selectItems value="#{answer.htmlOptions}" var="options"
+													itemLabel="#{options.value}" itemValue="#{options.key}"></f:selectItems>
+											</p:selectManyCheckbox>
+										</div>
+									</p:outputPanel>
+									<p:outputPanel styleClass="styleForDivTextArea"
+										rendered="#{answer.htmlControlType=='textarea'  and answer.defaultVisible}">
+										<div id="#{answer.htmlControlId}"
+											class="styleForDivTextArea_#{answer.htmlControlId}">
+											<p:inputTextarea autoResize="false" id="answerInputTextArea" disabled="true"
+												styleClass="styleForTextArea_#{answer.htmlControlId}"
+												value="#{answer.answer}" cols="100" rows="10"
+												rendered="#{answer.htmlControlType=='textarea'}" />
+
+											<p:watermark for="answerInputTextArea" value="Notes here"
+												id="watermarkTextArea"
+												rendered="#{answer.htmlControlType=='textarea'}" />
+										</div>
+									</p:outputPanel>
+
+									<p:outputPanel styleClass="styleForDivRemoveButton"
+										rendered="#{questionAnswer.renderAddObservation and answer.renderRemoveButton and  answer.htmlControlType=='radio'}">
+
+									
+
+									</p:outputPanel>
+									<p:outputPanel styleClass="styleForDivForErrorMessage"
+										style="border:1px" rendered="#{answer.defaultVisible}">
+										<div id="#{answer.htmlControlId}">
+											<p:message id="errorMessage" for="errorMessage"></p:message>
+										</div>
+
+									</p:outputPanel>
+
+								</ui:repeat>
+
+
+								<p:outputPanel styleClass="styleForDivAddButton"
+									rendered="#{questionAnswer.renderAddObservation}">
+
+
+
+								</p:outputPanel>
+								<br />
+								<br />
+							</ui:repeat>
+						</p:outputPanel>
+
+					</ui:repeat>
+				</p:panel>
+
+
+
+
+			</h:panelGrid>
+			<ui:include src="emailAddress.xhtml" />
+
+			<br />
+			<ui:include src="saveNextPrevButtons.xhtml">
+				<ui:param name="id1" value="footer" />
+				<ui:param name="id2" value="header" />
+			</ui:include>
+
+
+	</ui:define>
+</ui:composition>

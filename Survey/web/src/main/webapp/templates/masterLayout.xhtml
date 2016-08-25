@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<f:view>
+	<h:head>
+		<h:outputStylesheet library="css" name="styles.css"></h:outputStylesheet>
+		<h:outputStylesheet library="css" name="themeOverride.css"></h:outputStylesheet>
+		<h:outputStylesheet library="css" name="HospitalInectionControl.css"></h:outputStylesheet>
+	</h:head>
+	<h:body id="entirePage">
+
+		<h:form id="surveryQuestionForm">
+			<p:layout fullPage="true" style="padding:0px; width:100%">
+
+				<p:layoutUnit position="north"
+					style="border:none !important;overflow: none !important;">
+					<h:panelGrid columns="2" style="width:100%"
+						columnClasses="width20, width80" styleClass="alignBottom">
+						<h:graphicImage id="logo" library="images"
+							name="cms_swoosh_small2.png" />
+						<ui:insert name="menu" />
+
+					</h:panelGrid>
+					<div class="versionClass">
+						<h:panelGrid columns="2">
+							<h:outputLabel value="Version 1.0 " />
+							<h:outputLabel
+								rendered="#{surveyQuestionsBean.surveyQuestionSectionList.size()>0}"
+								value="Josn  #{surveyQuestionsBean.surveyQuestionSectionList[0].version}" />
+						</h:panelGrid>
+					</div>
+
+				</p:layoutUnit>
+				<p:layoutUnit position="center" resizable="true"
+					style="padding:0px; width:100%">
+					<p:spacer height="10"></p:spacer>
+					<center>
+						<div class="contentStyle">
+							<h:panelGrid border="0" style="width:95%">
+								<ui:insert name="content" />
+							</h:panelGrid>
+						</div>
+					</center>
+				</p:layoutUnit>
+
+				<p:layoutUnit position="south" resizable="true"
+					style="padding:0px; width:100%">
+					<center>
+						<h:panelGrid columns="2">
+							<h:outputLabel
+								value="Please email any comments regarding this application to " />
+							<p:link style="color:blue"
+								href="mailto:pfp.scg@cms.hhs.gov?subject=Specialty Surveys  &body; = Please leave your comments here.%0D%0A%0D%0ARegards,%0D%0A%0D%0AHendall Development Team"
+								value="pfp.scg@cms.hhs.gov"></p:link>
+						</h:panelGrid>
+						<h:outputLabel
+							value="If you need assistance navigating this application, please call Hendall Inc. on (301) 806-7483" />
+					</center>
+				</p:layoutUnit>
+			</p:layout>
+
+
+			<p:ajaxStatus onstart="PF('statusDialog').show()"
+				onsuccess="PF('statusDialog').hide()" />
+
+			<p:dialog widgetVar="statusDialog" modal="true" draggable="false"
+				closable="false" resizable="false" showHeader="false">
+				<h:outputLabel value="Loading" />
+			</p:dialog>
+
+
+
+		</h:form>
+
+
+	</h:body>
+
+</f:view>
+</html>

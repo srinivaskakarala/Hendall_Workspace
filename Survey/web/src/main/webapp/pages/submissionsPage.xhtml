@@ -1,0 +1,46 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui"
+	>
+	<p:outputPanel id="submissionsPanldGrid" style="width:100%">
+		<h:panelGrid style="width:100%"
+			rendered="#{surveyQuestionsBean.pageIndex eq surveyQuestionsBean.masterSurveyQuestionSectionList.size()}">
+			<p:panel styleClass="sectionPanel" style="width:100%">
+				<h:panelGrid>
+					<p:outputPanel styleClass="pageHeaderCenterAlignment" >
+						<p:outputLabel styleClass="h2" value="Submissions Page #{surveyQuestionsBean.pageIndex}--#{surveyQuestionsBean.masterSurveyQuestionSectionList.size()}  --#{surveyQuestionsBean.pageIndex eq surveyQuestionsBean.masterSurveyQuestionSectionList.size()+1}"></p:outputLabel>
+					</p:outputPanel>
+				</h:panelGrid>
+			</p:panel>
+
+			<p:panel styleClass="sectionPanel" style="width:100%">
+				<p:outputLabel value="Supplementary Documentation" styleClass="h4"></p:outputLabel>
+			</p:panel>
+			
+
+			<p:panel styleClass="sectionPanel" style="width:100%">
+					<h:panelGrid>
+						<p:outputLabel styleClass="h4" value="Survey Approver Details"></p:outputLabel>
+						<br />
+						<p:outputLabel
+							value="Please enter the email address of your supervisor in this section."></p:outputLabel>
+						<p:outputLabel
+							value="Upon submission of the survey, an email will be sent to your supervisor, for their appproval."></p:outputLabel>
+						<br />
+						<p:outputPanel
+							styleClass="styleForEmailAddrsLabel_SubmissionsPage">
+							<p:outputLabel value="Supervisor Email Address: "></p:outputLabel>
+						</p:outputPanel>
+						<p:outputPanel
+							styleClass="styleForEmailAddrsInputTxt_SubmissionsPage">
+							<p:inputText value=""></p:inputText>
+						</p:outputPanel>
+					</h:panelGrid>
+				</p:panel>
+		</h:panelGrid>
+	</p:outputPanel>
+
+</ui:composition>

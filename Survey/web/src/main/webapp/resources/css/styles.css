@@ -1,0 +1,408 @@
+body {
+	/*background-color: SkyBlue;*/
+	/*background-color: #C6E2FF;*/
+	background-color: #F5F5F5 !important;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+	font-size: 12px !important;
+	color: DimGray !important;
+	margin: 0px 0px !important;
+	padding: 0px 0px !important;
+}
+
+.dataTableHeaders th {
+	background: #0057af !important;
+	background: #0057af
+		-moz-linear-gradient(center top, #0057af 5%, #0057af 100%) repeat
+		scroll 0 0 !important;
+	background: #0057af
+		-webkit-gradient(linear, left top, left bottom, from(rgb(0, 80, 156)),
+		to(#0057af)) !important;
+	border: none !important;
+	color: #ffffff !important;
+	font-size: 12px !important;
+	font-weight: bold !important;
+	text-align: left !important;
+	text-shadow: none !important;
+	border: 1px solid #a8a8a8 !important;
+	box-shadow: 0 0 !important;
+}
+
+.confirmationDialogs div:first-child {
+	background: #0057af !important;
+	background: #0057af
+		-moz-linear-gradient(center top, #0057af 5%, #0057af 100%) repeat
+		scroll 0 0 !important;
+	background: #0057af
+		-webkit-gradient(linear, left top, left bottom, from(rgb(0, 80, 156)),
+		to(#0057af)) !important;
+	border: none !important;
+	color: #ffffff !important;
+	font-size: 12px !important;
+	font-weight: bold !important;
+	text-align: left !important;
+	text-shadow: none !important;
+	border: 1px solid #a8a8a8 !important;
+	box-shadow: 0 0 !important;
+}
+
+/* .dataTableHeaders .ui-state-default th {
+	border: 1px solid #a8a8a8;
+	background: #c4c4c4 url("/Survey-web/javax.faces.resource/images/ui-bg_highlight-hard_80_c4c4c4_1x100.png.jsf?ln=primefaces-aristo") 50% 50% repeat-x;
+	background: #c4c4c4 linear-gradient(top, rgba(255, 255, 255, 0.8),
+		rgba(255, 255, 255, 0));
+	background: #c4c4c4
+		-webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255,
+		0.8)), to(rgba(255, 255, 255, 0)));
+	background: #c4c4c4 -moz-linear-gradient(top, rgba(255, 255, 255, 0.8),
+		rgba(255, 255, 255, 0));
+	font-weight: bold;
+	color: red !important;
+	text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.7);
+} */
+.myButton {
+	-moz-box-shadow: inset 0px 1px 0px 0px #54a3f7 !important;
+	-webkit-box-shadow: inset 0px 1px 0px 0px #54a3f7 !important;
+	box-shadow: inset 0px 1px 0px 0px #54a3f7 !important;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #007dc1
+		), color-stop(1, #0061a7)) !important;
+	background: -moz-linear-gradient(top, #007dc1 5%, #0061a7 100%)
+		!important;
+	background: -webkit-linear-gradient(top, #007dc1 5%, #0061a7 100%)
+		!important;
+	background: -o-linear-gradient(top, #007dc1 5%, #0061a7 100%) !important;
+	background: -ms-linear-gradient(top, #007dc1 5%, #0061a7 100%)
+		!important;
+	background: linear-gradient(to bottom, #007dc1 5%, #0061a7 100%)
+		!important;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#007dc1',
+		endColorstr='#0061a7', GradientType=0) !important;
+	background-color: #007dc1 !important;
+	-moz-border-radius: 3px !important;
+	-webkit-border-radius: 3px !important;
+	border-radius: 3px !important;
+	border: 1px solid #124d77 !important;
+	display: inline-block !important;
+	cursor: pointer !important;
+	color: #ffffff !important;
+	/*font-family:Arial;*/
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+	/* chris */
+	font-size: 11px !important;
+	padding: 4px 6px !important;
+	text-decoration: none !important;
+	text-shadow: 0px 1px 0px #154682 !important;
+}
+
+.myButton:hover {
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #0061a7
+		), color-stop(1, #007dc1)) !important;
+	background: -moz-linear-gradient(top, #0061a7 5%, #007dc1 100%)
+		!important;
+	background: -webkit-linear-gradient(top, #0061a7 5%, #007dc1 100%)
+		!important;
+	background: -o-linear-gradient(top, #0061a7 5%, #007dc1 100%) !important;
+	background: -ms-linear-gradient(top, #0061a7 5%, #007dc1 100%)
+		!important;
+	background: linear-gradient(to bottom, #0061a7 5%, #007dc1 100%)
+		!important;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0061a7',
+		endColorstr='#007dc1', GradientType=0) !important;
+	background-color: #0061a7 !important;
+}
+
+.myButton:active {
+	position: relative !important;
+	top: 1px !important;
+}
+/* big yellow button START */
+.myButton2 {
+	-moz-box-shadow: inset 0px 1px 0px 0px #fff6af !important;
+	-webkit-box-shadow: inset 0px 1px 0px 0px #fff6af !important;
+	box-shadow: inset 0px 1px 0px 0px #fff6af !important;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffec64
+		), color-stop(1, #ffab23)) !important;
+	background: -moz-linear-gradient(top, #ffec64 5%, #ffab23 100%)
+		!important;
+	background: -webkit-linear-gradient(top, #ffec64 5%, #ffab23 100%)
+		!important;
+	background: -o-linear-gradient(top, #ffec64 5%, #ffab23 100%) !important;
+	background: -ms-linear-gradient(top, #ffec64 5%, #ffab23 100%)
+		!important;
+	background: linear-gradient(to bottom, #ffec64 5%, #ffab23 100%)
+		!important;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffec64',
+		endColorstr='#ffab23', GradientType=0) !important;
+	background-color: #ffec64 !important;
+	-moz-border-radius: 4px !important;
+	-webkit-border-radius: 4px !important;
+	border-radius: 4px !important;
+	border: 1px solid #ffaa22 !important;
+	display: inline-block !important;
+	cursor: pointer !important;
+	color: #333333 !important;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+	/* chris */
+	font-size: 12px !important;
+	font-weight: bold !important;
+	padding: 7px 20px !important;
+	text-decoration: none !important;
+	text-shadow: 0px 1px 0px #ffee66 !important;
+}
+
+.myButton2:hover {
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffab23
+		), color-stop(1, #ffec64)) !important;
+	background: -moz-linear-gradient(top, #ffab23 5%, #ffec64 100%)
+		!important;
+	background: -webkit-linear-gradient(top, #ffab23 5%, #ffec64 100%)
+		!important;
+	background: -o-linear-gradient(top, #ffab23 5%, #ffec64 100%) !important;
+	background: -ms-linear-gradient(top, #ffab23 5%, #ffec64 100%)
+		!important;
+	background: linear-gradient(to bottom, #ffab23 5%, #ffec64 100%)
+		!important;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffab23',
+		endColorstr='#ffec64', GradientType=0) !important;
+	background-color: #ffab23 !important;
+}
+
+.myButton2:active {
+	position: relative !important;
+	top: 1px !important;
+}
+/* big yellow button END */
+
+/* big blue button START */
+.myButton3 {
+	-moz-box-shadow: inset 0px 1px 0px 0px #54a3f7 !important;
+	-webkit-box-shadow: inset 0px 1px 0px 0px #54a3f7 !important;
+	box-shadow: inset 0px 1px 0px 0px #54a3f7 !important;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #007dc1
+		), color-stop(1, #0061a7)) !important;
+	background: -moz-linear-gradient(top, #007dc1 5%, #0061a7 100%)
+		!important;
+	background: -webkit-linear-gradient(top, #007dc1 5%, #0061a7 100%)
+		!important;
+	background: -o-linear-gradient(top, #007dc1 5%, #0061a7 100%) !important;
+	background: -ms-linear-gradient(top, #007dc1 5%, #0061a7 100%)
+		!important;
+	background: linear-gradient(to bottom, #007dc1 5%, #0061a7 100%)
+		!important;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#007dc1',
+		endColorstr='#0061a7', GradientType=0);
+	background-color: #007dc1 !important;
+	-moz-border-radius: 4px !important;
+	-webkit-border-radius: 4px !important;
+	border-radius: 4px !important;
+	border: 1px solid #124d77 !important;
+	display: inline-block !important;
+	cursor: pointer !important;
+	color: #ffffff !important;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+	font-size: 12px !important;
+	font-weight: bold !important;
+	padding: 7px 20px !important;
+	text-decoration: none !important;
+	text-shadow: 0px 1px 0px #154682 !important;
+}
+
+.myButton3:hover {
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #0061a7
+		), color-stop(1, #007dc1)) !important;
+	background: -moz-linear-gradient(top, #0061a7 5%, #007dc1 100%)
+		!important;
+	background: -webkit-linear-gradient(top, #0061a7 5%, #007dc1 100%)
+		!important;
+	background: -o-linear-gradient(top, #0061a7 5%, #007dc1 100%) !important;
+	background: -ms-linear-gradient(top, #0061a7 5%, #007dc1 100%)
+		!important;
+	background: linear-gradient(to bottom, #0061a7 5%, #007dc1 100%)
+		!important;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0061a7',
+		endColorstr='#007dc1', GradientType=0) !important;
+	background-color: #0061a7 !important;
+}
+
+.myDisabledButton2 {
+	-moz-box-shadow: inset 0px 1px 0px 0px #808080 !important;
+	-webkit-box-shadow: inset 0px 1px 0px 0px #808080 !important;
+	box-shadow: inset 0px 1px 0px 0px #808080 !important;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #808080
+		), color-stop(1, #808080)) !important;
+	background: -moz-linear-gradient(top, #ffec64 5%, #808080 100%)
+		!important;
+	background: -webkit-linear-gradient(top, #ffec64 5%, #808080 100%)
+		!important;
+	background: -o-linear-gradient(top, #808080 5%, #808080 100%) !important;
+	background: -ms-linear-gradient(top, #808080 5%, #808080 100%)
+		!important;
+	background: linear-gradient(to bottom, #808080 5%, #808080 100%)
+		!important;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#808080',
+		endColorstr='#808080', GradientType=0) !important;
+	background-color: #808080 !important;
+	-moz-border-radius: 4px !important;
+	-webkit-border-radius: 4px !important;
+	border-radius: 4px !important;
+	border: 1px solid #808080 !important;
+	display: inline-block !important;
+	cursor: pointer !important;
+	color: #333333 !important;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+	/* chris */
+	font-size: 12px !important;
+	font-weight: bold !important;
+	padding: 7px 20px !important;
+	text-decoration: none !important;
+	text-shadow: 0px 1px 0px #808080 !important;
+}
+
+.myDisabledButton2:hover {
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #808080
+		), color-stop(1, #808080)) !important;
+	background: -moz-linear-gradient(top, #808080 5%, #808080 100%)
+		!important;
+	background: -webkit-linear-gradient(top, #808080 5%, #808080 100%)
+		!important;
+	background: -o-linear-gradient(top, #808080 5%, #808080 100%) !important;
+	background: -ms-linear-gradient(top, #808080 5%, #808080 100%)
+		!important;
+	background: linear-gradient(to bottom, #808080 5%, #808080 100%)
+		!important;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#808080',
+		endColorstr='#808080', GradientType=0) !important;
+	background-color: #808080 !important;
+}
+
+.articleBox {
+	/*border:1px solid grey; margin:10px; padding:8px;*/
+	border: 1px solid #888888;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	margin-left: 100px;
+	margin-right: 100px;
+	padding: 8px;
+	background-color: white;
+	border-radius: 8px;
+	/*box-shadow: 2px 2px 3px #888888;*/
+	box-shadow: 1px 1px 3px #888888;
+}
+
+.myButton3:active {
+	position: relative !important;
+	top: 1px !important;
+}
+
+.centerText {
+	text-align: center !important;
+}
+
+.sectionPanel {
+	width: 100% !important;
+}
+
+/* .contentStyle {
+	position: relative !important;
+	left: 53px !important;
+} */
+.h2 {
+	color: #000000 !important;
+	font-size: 18px !important;
+	font-weight: bold !important
+}
+
+.h4 {
+	color: #696969 !important;
+	font-size: 14px !important;
+	font-weight: bold !important
+}
+
+.menuStyle ul li .ui-state-hover {
+	background: #85b2cb -moz-linear-gradient(center top, rgb(0, 80, 156),
+		rgb(0, 80, 156)) repeat scroll 0 0;
+	border: 1px solid #7096ab;
+	box-shadow: 0 0 8px #85b2cb !important;
+	color: white !important;
+	font-weight: bold;
+}
+
+.menuStyle {
+	background-color: #ffffff !important;
+}
+
+.menuStyle  li {
+	width: 20% !important;
+}
+
+.menuStyle ul li ul {
+	background: rgb(0, 80, 156) !important;
+}
+
+.menuStyle ul li ul {
+	background: rgb(0, 80, 156) !important;
+}
+
+.menuStyle .ui-state-hover  ul li a span {
+	color: white !important
+}
+
+.menuStyle ul li ul li a span {
+	color: white !important
+}
+
+.menuStyle ul li ul li {
+	width: 100% !important;
+}
+
+/* ul.ui-menu-child {
+	white-space: nowrap !important;
+	width: auto !important;
+}
+ */
+.alignBottom td {
+	vertical-align: bottom;
+}
+
+.noBorder td {
+	border: none !important;
+}
+
+.width10 {
+	width: 10% !important;
+}
+
+.width20 {
+	width: 20% !important;
+}
+
+.width30 {
+	width: 30% !important;
+}
+
+.width40 {
+	width: 40% !important;
+}
+
+.width50 {
+	width: 50% !important;
+}
+
+.width60 {
+	width: 60% !important;
+}
+
+.width70 {
+	width: 70% !important;
+}
+
+.width80 {
+	width: 80% !important;
+}
+
+.width90 {
+	width: 90% !important;
+}
+
+.width100 {
+	width: 100% !important;
+}

@@ -1,0 +1,2351 @@
+{
+  "surveyID": 1,
+  "title": "ASC Infection Control Surveyor Worksheet",
+  "version": "v0.3a",
+  "versionHistory": "version history info here!!!",
+  "creationDate": "6/10/2015",
+  "lastModifiedDate": "6/25/2015",
+  "author": "author info here!!!",
+  "description": "",
+  "instructions": "Instructions: The following is a list of items that must be assessed during the on-site survey, in order to determine compliance with the infection control Condition for Coverage.  Items are to be assessed primarily by surveyor observation, with interviews used to provide additional confirming evidence of observations.  In some cases information gained from interviews may provide sufficient evidence to support a deficiency citation. The interviews and observations should be performed with the most appropriate staff person(s) for the items of interest (e.g., the staff person responsible for sterilization should answer the sterilization questions). A minimum of one surgical procedure must be observed during the site visit. The surveyor(s) must identify at least one patient and follow that case from registration to discharge to observe pertinent practices. For facilities that perform brief procedures, e.g., colonoscopies, it is preferable to follow at least two cases. When performing interviews and observations, any single instance of a breach in infection control would constitute a breach for that practice. Citation instructions are provided throughout this instrument, indicating the applicable regulatory provision to be cited on the Form CMS-2567 when deficient practices are observed.",
+  "page": [
+    {
+      "title": "Page 1",
+      "question": [
+        {
+          "questionID": 1,
+          "text": "1. ASC Name",
+          "displayMediaIcon": true,
+          "htmlControl": [
+            {
+              "controlID": 1,
+              "controlType": "textbox"
+            }
+          ]
+        },
+        {
+          "questionID": 2,
+          "text": "2. Address, State and Zip Code",
+          "htmlControl": [
+            {
+              "controlID": 2,
+              "controlType": "textbox",
+              "placeholder": "Address"
+            },
+            {
+              "controlID": 3,
+              "controlType": "textbox",
+              "placeholder": "City"
+            },
+            {
+              "controlID": 4,
+              "controlType": "select",
+              "text": "State"
+            },
+            {
+              "controlID": 5,
+              "controlType": "textbox",
+              "placeholder": "Zip"
+            }
+          ]
+        },
+        {
+          "questionID": 3,
+          "text": "3. 10-digit CMS Certification Number",
+          "htmlControl": [
+            {
+              "controlID": 6,
+              "controlType": "number"
+            }
+          ]
+        },
+        {
+          "questionID": 4,
+          "text": "4. What year did the ASC open for operation?",
+          "htmlControl": [
+            {
+              "controlID": 7,
+              "controlType": "number"
+            }
+          ]
+        },
+        {
+          "questionID": 5,
+          "text": "5. Please list date(s) of site visit:",
+          "htmlControl": [
+            {
+              "controlID": 8,
+              "controlType": "date"
+            },
+            {
+              "controlID": 9,
+              "controlType": "date"
+            }
+          ]
+        },
+        {
+          "questionID": 6,
+          "text": "6. What was the date of the most recent previous federal (CMS) survey:",
+          "htmlControl": [
+            {
+              "controlID": 10,
+              "controlType": "date"
+            }
+          ]
+        },
+        {
+          "questionID": 7,
+          "text": "7. Does the ASC participate in Medicare via accredited �deemed� status?",
+          "htmlControl": [
+            {
+              "controlID": 11,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 12,
+              "controlType": "radio",
+              "text": "No"
+            }
+          ]
+        },
+        {
+          "questionID": 8,
+          "text": "7a. If YES, by which CMS-recognized accreditation organization(s)?",
+          "htmlControl": [
+            {
+              "controlID": 13,
+              "controlType": "radio",
+              "text": "Accreditation Association for Ambulatory Health Care (AAAHC)"
+            },
+            {
+              "controlID": 14,
+              "controlType": "radio",
+              "text": "American Associate for Accred. of Ambulatory Surgery Facilities (AAAASF)"
+            },
+            {
+              "controlID": 15,
+              "controlType": "radio",
+              "text": "American Osteopathic Association (AOA)"
+            },
+            {
+              "controlID": 16,
+              "controlType": "radio",
+              "text": "The Joint Commission (TJC)"
+            }
+          ]
+        },
+        {
+          "questionID": 9,
+          "text": "7b. If YES, according to the ASC, what was the date of the most recent accreditation survey?",
+          "htmlControl": [
+            {
+              "controlID": 17,
+              "controlType": "date"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Page 2",
+      "question": [
+        {
+          "questionID": 10,
+          "text": "8. What is the ownership of the facility? (SELECT only ONE bubble)",
+          "htmlControl": [
+            {
+              "controlID": 18,
+              "controlType": "radio",
+              "text": "Physician-owned"
+            },
+            {
+              "controlID": 19,
+              "controlType": "radio",
+              "text": "Hospital-owned"
+            },
+            {
+              "controlID": 20,
+              "controlType": "radio",
+              "text": "National corporation (including joint ventures with physicians)"
+            },
+            {
+              "controlID": 21,
+              "controlType": "radio",
+              "text": "Other (please print):"
+            },
+            {
+              "controlID": 22,
+              "controlType": "textarea",
+              "parentControlID": 21
+            }
+          ]
+        },
+        {
+          "questionID": 11,
+          "text": "9. What is the primary procedure performed at the ASC (i.e., what procedure type reflects the majority of procedures performed at the ASC)? (Select only ONE bubble)",
+          "htmlControl": [
+            {
+              "controlID": 23,
+              "controlType": "radio",
+              "text": "Dental"
+            },
+            {
+              "controlID": 24,
+              "controlType": "radio",
+              "text": "Endoscopy"
+            },
+            {
+              "controlID": 25,
+              "controlType": "radio",
+              "text": "Ear/Nose/Throat"
+            },
+            {
+              "controlID": 26,
+              "controlType": "radio",
+              "text": "OB/Gyn"
+            },
+            {
+              "controlID": 27,
+              "controlType": "radio",
+              "text": "Ophthalmologic"
+            },
+            {
+              "controlID": 28,
+              "controlType": "radio",
+              "text": "Orthopedic"
+            },
+            {
+              "controlID": 29,
+              "controlType": "radio",
+              "text": "Pain"
+            },
+            {
+              "controlID": 30,
+              "controlType": "radio",
+              "text": "Plastic/reconstructive"
+            },
+            {
+              "controlID": 31,
+              "controlType": "radio",
+              "text": "Podiatry"
+            },
+            {
+              "controlID": 32,
+              "controlType": "radio",
+              "text": "Other (please specify):"
+            },
+            {
+              "controlID": 33,
+              "controlType": "textarea",
+              "parentControlID": 32
+            }
+          ]
+        },
+        {
+          "questionID": 12,
+          "text": "10. What additional procedures are performed at the ASC? (Select all that apply) Do not include the procedure type indicated in question 9.",
+          "htmlControl": [
+            {
+              "controlID": 34,
+              "controlType": "checkbox",
+              "text": "Dental"
+            },
+            {
+              "controlID": 35,
+              "controlType": "checkbox",
+              "text": "Endoscopy"
+            },
+            {
+              "controlID": 36,
+              "controlType": "checkbox",
+              "text": "Ear/Nose/Throat"
+            },
+            {
+              "controlID": 37,
+              "controlType": "checkbox",
+              "text": "OB/Gyn"
+            },
+            {
+              "controlID": 38,
+              "controlType": "checkbox",
+              "text": "Ophthalmologic"
+            },
+            {
+              "controlID": 39,
+              "controlType": "checkbox",
+              "text": "Orthopedic"
+            },
+            {
+              "controlID": 40,
+              "controlType": "checkbox",
+              "text": "Pain"
+            },
+            {
+              "controlID": 41,
+              "controlType": "checkbox",
+              "text": "Plastic/reconstructive"
+            },
+            {
+              "controlID": 42,
+              "controlType": "checkbox",
+              "text": "Podiatry"
+            },
+            {
+              "controlID": 43,
+              "controlType": "checkbox",
+              "text": "Other (please specify):"
+            },
+            {
+              "controlID": 44,
+              "controlType": "textarea",
+              "parentControlID": 43
+            },
+            {
+              "controlID": 45,
+              "controlType": "checkbox",
+              "text": "N/A"
+            }
+          ]
+        },
+        {
+          "questionID": 13,
+          "text": "11. Who does the ASC perform procedures on? (Select only ONE bubble)",
+          "htmlControl": [
+            {
+              "controlID": 46,
+              "controlType": "radio",
+              "text": "Pediatric patients only"
+            },
+            {
+              "controlID": 47,
+              "controlType": "radio",
+              "text": "Adult patients only"
+            },
+            {
+              "controlID": 48,
+              "controlType": "radio",
+              "text": "Both pediatric and adult patients"
+            }
+          ]
+        },
+        {
+          "questionID": 14,
+          "text": "12. What is the average number of procedures performed at the ASC per month?",
+          "htmlControl": [
+            {
+              "controlID": 49,
+              "controlType": "number"
+            }
+          ]
+        },
+        {
+          "questionID": 15,
+          "text": "13. How many Operating Rooms (including procedure rooms) does the ASC have?",
+          "htmlControl": [
+            {
+              "controlID": 50,
+              "controlType": "select"
+            }
+          ]
+        },
+        {
+          "questionID": 16,
+          "text": "Number actively maintained:",
+          "htmlControl": [
+            {
+              "controlID": 51,
+              "controlType": "select"
+            }
+          ]
+        },
+        {
+          "questionID": 17,
+          "text": "14. Please indicate how the following services are provided: (fill in all that apply)<br><br>Anesthesia/Analgesia",
+          "htmlControl": [
+            {
+              "controlID": 52,
+              "controlType": "radio",
+              "text": "Contract"
+            },
+            {
+              "controlID": 53,
+              "controlType": "radio",
+              "text": "Employee"
+            },
+            {
+              "controlID": 54,
+              "controlType": "radio",
+              "text": "Other"
+            },
+            {
+              "controlID": 55,
+              "controlType": "textarea",
+              "parentControlID": 54
+            }
+          ]
+        },
+        {
+          "questionID": 18,
+          "text": "Environmental Cleaning",
+          "htmlControl": [
+            {
+              "controlID": 56,
+              "controlType": "radio",
+              "text": "Contract"
+            },
+            {
+              "controlID": 57,
+              "controlType": "radio",
+              "text": "Employee"
+            },
+            {
+              "controlID": 58,
+              "controlType": "radio",
+              "text": "Other"
+            },
+            {
+              "controlID": 59,
+              "controlType": "textarea",
+              "parentControlID": 58
+            }
+          ]
+        },
+        {
+          "questionID": 19,
+          "text": "Linen",
+          "htmlControl": [
+            {
+              "controlID": 60,
+              "controlType": "radio",
+              "text": "Contract"
+            },
+            {
+              "controlID": 61,
+              "controlType": "radio",
+              "text": "Employee"
+            },
+            {
+              "controlID": 62,
+              "controlType": "radio",
+              "text": "Other"
+            },
+            {
+              "controlID": 63,
+              "controlType": "textarea",
+              "parentControlID": 62
+            }
+          ]
+        },
+        {
+          "questionID": 20,
+          "text": "Nursing",
+          "htmlControl": [
+            {
+              "controlID": 64,
+              "controlType": "radio",
+              "text": "Contract"
+            },
+            {
+              "controlID": 65,
+              "controlType": "radio",
+              "text": "Employee"
+            },
+            {
+              "controlID": 66,
+              "controlType": "radio",
+              "text": "Other"
+            },
+            {
+              "controlID": 67,
+              "controlType": "textarea",
+              "parentControlID": 66
+            }
+          ]
+        },
+        {
+          "questionID": 21,
+          "text": "Pharmacy",
+          "htmlControl": [
+            {
+              "controlID": 68,
+              "controlType": "radio",
+              "text": "Contract"
+            },
+            {
+              "controlID": 69,
+              "controlType": "radio",
+              "text": "Employee"
+            },
+            {
+              "controlID": 70,
+              "controlType": "radio",
+              "text": "Other"
+            },
+            {
+              "controlID": 71,
+              "controlType": "textarea",
+              "parentControlID": 70
+            }
+          ]
+        },
+        {
+          "questionID": 22,
+          "text": "Sterilization/Reprocessing",
+          "htmlControl": [
+            {
+              "controlID": 72,
+              "controlType": "radio",
+              "text": "Contract"
+            },
+            {
+              "controlID": 73,
+              "controlType": "radio",
+              "text": "Employee"
+            },
+            {
+              "controlID": 74,
+              "controlType": "radio",
+              "text": "Other"
+            },
+            {
+              "controlID": 75,
+              "controlType": "textarea",
+              "parentControlID": 74
+            }
+          ]
+        },
+        {
+          "questionID": 23,
+          "text": "Waste Management",
+          "htmlControl": [
+            {
+              "controlID": 76,
+              "controlType": "radio",
+              "text": "Contract"
+            },
+            {
+              "controlID": 77,
+              "controlType": "radio",
+              "text": "Employee"
+            },
+            {
+              "controlID": 78,
+              "controlType": "radio",
+              "text": "Other"
+            },
+            {
+              "controlID": 79,
+              "controlType": "textarea",
+              "parentControlID": 78
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Page 3",
+      "question": [
+        {
+          "questionID": 24,
+          "text": "15. Does the ASC have an explicit infection control program?",
+          "htmlControl": [
+            {
+              "controlID": 80,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 81,
+              "controlType": "radio",
+              "text": "No"
+            }
+          ]
+        },
+        {
+          "questionID": 25,
+          "text": "16. Does the ASC�s infection control program follow nationally recognized infection control guidelines?",
+          "htmlControl": [
+            {
+              "controlID": 82,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 83,
+              "controlType": "radio",
+              "text": "No"
+            }
+          ]
+        },
+        {
+          "questionID": 26,
+          "text": "16a. Is there documentation that the ASC considered and selected nationally-recognized infection control guidelines for its program?",
+          "htmlControl": [
+            {
+              "controlID": 84,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 85,
+              "controlType": "radio",
+              "text": "No"
+            }
+          ]
+        },
+        {
+          "questionID": 27,
+          "text": "16b. If YES to (a), which nationally-recognized infection control guidelines has the ASC selected for its program? (Select all that apply)",
+          "htmlControl": [
+            {
+              "controlID": 86,
+              "controlType": "checkbox",
+              "text": "CDC/HICPAC Guidelines:"
+            },
+            {
+              "controlID": 87,
+              "controlType": "checkbox",
+              "text": "Guideline for Isolation Precautions (CDC/HICPAC)"
+            },
+            {
+              "controlID": 88,
+              "controlType": "checkbox",
+              "text": "Hand hygiene (CDC/HICPAC)"
+            },
+            {
+              "controlID": 89,
+              "controlType": "checkbox",
+              "text": "Disinfection and Sterilization in Healthcare Facilities (CDC/HICPAC)"
+            },
+            {
+              "controlID": 90,
+              "controlType": "checkbox",
+              "text": "Environmental Infection Control in Healthcare Facilities (CDC/HICPAC)"
+            },
+            {
+              "controlID": 91,
+              "controlType": "checkbox",
+              "text": "Perioperative Standards and Recommended Practices (AORN)"
+            },
+            {
+              "controlID": 92,
+              "controlType": "checkbox",
+              "text": "Guidelines issued by a specialty surgical society / organization (List)"
+            },
+            {
+              "controlID": 93,
+              "controlType": "textarea",
+              "parentControlID": 92
+            },
+            {
+              "controlID": 94,
+              "controlType": "checkbox",
+              "text": "Others"
+            },
+            {
+              "controlID": 95,
+              "controlType": "textarea",
+              "parentControlID": 94
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Page 4",
+      "question": [
+        {
+          "questionID": 28,
+          "text": "17. Does the ASC have a licensed health care professional qualified through training in infection control and designated to direct the ASC�s infection control program?",
+          "htmlControl": [
+            {
+              "controlID": 96,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 97,
+              "controlType": "radio",
+              "text": "No"
+            }
+          ]
+        },
+        {
+          "questionID": 29,
+          "text": "17a. If YES, Is this person an: (Select only ONE bubble)",
+          "htmlControl": [
+            {
+              "controlID": 98,
+              "controlType": "radio",
+              "text": "ASC employee"
+            },
+            {
+              "controlID": 99,
+              "controlType": "radio",
+              "text": "ASC contractor"
+            }
+          ]
+        },
+        {
+          "questionID": 30,
+          "text": "17b. Is this person certified in infection control (i.e., CIC)",
+          "htmlControl": [
+            {
+              "controlID": 100,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 101,
+              "controlType": "radio",
+              "text": "No"
+            }
+          ]
+        },
+        {
+          "questionID": 31,
+          "text": "17c. If this person is NOT certified in infection control, what controlType of infection control training has this person received?",
+          "htmlControl": [
+            {
+              "controlID": 102,
+              "controlType": "textarea"
+            }
+          ]
+        },
+        {
+          "questionID": 32,
+          "text": "17d. On average, how many hours per week does this person spend in the ASC directing the infection control program?",
+          "htmlControl": [
+            {
+              "controlID": 103,
+              "controlType": "number"
+            }
+          ]
+        },
+        {
+          "questionID": 33,
+          "text": "18. Does the ASC have a system to actively identify infections that may have been related to procedures performed at the ASC?",
+          "htmlControl": [
+            {
+              "controlID": 104,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 105,
+              "controlType": "radio",
+              "text": "No"
+            }
+          ]
+        },
+        {
+          "questionID": 34,
+          "text": "18a. If YES, how does the ASC obtain this information? (Select ALL that apply)",
+          "htmlControl": [
+            {
+              "controlID": 106,
+              "controlType": "checkbox",
+              "text": "The ASC sends e-mails to patients after discharge"
+            },
+            {
+              "controlID": 107,
+              "controlType": "checkbox",
+              "text": "The ASC follows-up with their patients� primary care providers after discharge"
+            },
+            {
+              "controlID": 108,
+              "controlType": "checkbox",
+              "text": "The ASC relies on the physician performing the procedure to obtain this information at a follow-up visit after discharge, and report it to the ASC"
+            },
+            {
+              "controlID": 109,
+              "controlType": "checkbox",
+              "text": "Other (please specify):"
+            },
+            {
+              "controlID": 110,
+              "controlType": "textarea",
+              "parentControlID": 109
+            }
+          ]
+        },
+        {
+          "questionID": 35,
+          "text": "18b. Is there supporting documentation confirming this tracking activity?",
+          "htmlControl": [
+            {
+              "controlID": 111,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 112,
+              "controlType": "radio",
+              "text": "No"
+            }
+          ]
+        },
+        {
+          "questionID": 36,
+          "text": "18c. Does the ASC have a policy/procedure in place to comply with State notifiable disease reporting requirements?",
+          "htmlControl": [
+            {
+              "controlID": 113,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 114,
+              "controlType": "radio",
+              "text": "No"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Page 5",
+      "question": [
+        {
+          "questionID": 37,
+          "text": "19. Do staff members receive infection control training?",
+          "htmlControl": [
+            {
+              "controlID": 115,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 116,
+              "controlType": "radio",
+              "text": "No"
+            }
+          ]
+        },
+        {
+          "questionID": 38,
+          "text": "19a. If YES, how do they receive infection control training? (Select all that apply)",
+          "htmlControl": [
+            {
+              "controlID": 117,
+              "controlType": "checkbox",
+              "text": "In-service"
+            },
+            {
+              "controlID": 118,
+              "controlType": "checkbox",
+              "text": "Computer-based training"
+            },
+            {
+              "controlID": 119,
+              "controlType": "checkbox",
+              "text": "Other (please specify):"
+            },
+            {
+              "controlID": 120,
+              "controlType": "textarea",
+              "parentControlID": 119
+            }
+          ]
+        },
+        {
+          "questionID": 39,
+          "text": "19b. Which staff members receive infection control training? (Select all that apply)",
+          "htmlControl": [
+            {
+              "controlID": 121,
+              "controlType": "checkbox",
+              "text": "Medical staff"
+            },
+            {
+              "controlID": 122,
+              "controlType": "checkbox",
+              "text": "Nursing staff"
+            },
+            {
+              "controlID": 123,
+              "controlType": "checkbox",
+              "text": "Other staff providing direct patient care"
+            },
+            {
+              "controlID": 124,
+              "controlType": "checkbox",
+              "text": "Staff responsible for on-site sterilization/high-level disinfection"
+            },
+            {
+              "controlID": 125,
+              "controlType": "checkbox",
+              "text": "Cleaning staff"
+            },
+            {
+              "controlID": 126,
+              "controlType": "checkbox",
+              "text": "Other (please specify):"
+            },
+            {
+              "controlID": 127,
+              "controlType": "textarea",
+              "parentControlID": 126
+            }
+          ]
+        },
+        {
+          "questionID": 40,
+          "text": "19c. Is training:",
+          "htmlControl": [
+            {
+              "controlID": 128,
+              "controlType": "radio",
+              "text": "the same for all categories of staff"
+            },
+            {
+              "controlID": 129,
+              "controlType": "radio",
+              "text": "different for different categories of staff"
+            }
+          ]
+        },
+        {
+          "questionID": 41,
+          "text": "19d. Indicate frequency of staff infection control training (Select all that apply)",
+          "htmlControl": [
+            {
+              "controlID": 130,
+              "controlType": "checkbox",
+              "text": "Upon hire"
+            },
+            {
+              "controlID": 131,
+              "controlType": "checkbox",
+              "text": "Annually"
+            },
+            {
+              "controlID": 132,
+              "controlType": "checkbox",
+              "text": "Periodically / as needed"
+            },
+            {
+              "controlID": 133,
+              "controlType": "checkbox",
+              "text": "Other (please specify):"
+            },
+            {
+              "controlID": 134,
+              "controlType": "textarea",
+              "parentControlID": 133
+            }
+          ]
+        },
+        {
+          "questionID": 42,
+          "text": "19e. Is there documentation confirming that training is provided to all categories of staff listed above?",
+          "htmlControl": [
+            {
+              "controlID": 135,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 136,
+              "controlType": "radio",
+              "text": "No"
+            }
+          ]
+        },
+        {
+          "questionID": 43,
+          "text": "20. How many procedures were observed during the site visit?",
+          "htmlControl": [
+            {
+              "controlID": 137,
+              "controlType": "select"
+            }
+          ]
+        },
+        {
+          "questionID": 44,
+          "text": "If other, please specify the number:",
+          "htmlControl": [
+            {
+              "controlID": 138,
+              "controlType": "number"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Page 6",
+      "question": [
+        {
+          "questionID": 45,
+          "text": "A. All patient care areas have readily accessible, in appropriate locations:<br><br>a. Soap and water ",
+          "htmlControl": [
+            {
+              "controlID": 139,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 140,
+              "controlType": "radio",
+              "text": "No"
+            }
+          ]
+        },
+        {
+          "questionID": 46,
+          "text": "b. Alcohol-based hand rubs  ",
+          "htmlControl": [
+            {
+              "controlID": 141,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 142,
+              "controlType": "radio",
+              "text": "No"
+            }
+          ]
+        },
+        {
+          "questionID": 47,
+          "text": "I. If alcohol-based hand rub is available in patient care areas, it is installed as required. (There are LSC requirements at 42 CFR 416.44(b)(5) for installation of alcohol-based hand rubs)",
+          "htmlControl": [
+            {
+              "controlID": 143,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 144,
+              "controlType": "radio",
+              "text": "No"
+            }
+          ]
+        },
+        {
+          "questionID": 48,
+          "text": "B. Staff perform hand hygiene:<br><br>a. After removing gloves",
+          "htmlControl": [
+            {
+              "controlID": 145,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 146,
+              "controlType": "radio",
+              "text": "No"
+            }
+          ]
+        },
+        {
+          "questionID": 49,
+          "text": "b. Before direct patient contact",
+          "htmlControl": [
+            {
+              "controlID": 147,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 148,
+              "controlType": "radio",
+              "text": "No"
+            }
+          ]
+        },
+        {
+          "questionID": 50,
+          "text": "c. After direct patient contact",
+          "htmlControl": [
+            {
+              "controlID": 149,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 150,
+              "controlType": "radio",
+              "text": "No"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Page 7",
+      "question": [
+        {
+          "questionID": 51,
+          "text": "d. Before performing invasive procedures (e.g. placing an IV)",
+          "htmlControl": [
+            {
+              "controlID": 151,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 152,
+              "controlType": "radio",
+              "text": "No"
+            },
+            {
+              "controlID": 153,
+              "controlType": "radio",
+              "text": "Unable to observe"
+            }
+          ]
+        },
+        {
+          "questionID": 52,
+          "text": "e. After contact with blood, body fluids, or contaminated surfaces (even if gloves are worn)",
+          "htmlControl": [
+            {
+              "controlID": 154,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 155,
+              "controlType": "radio",
+              "text": "No"
+            },
+            {
+              "controlID": 156,
+              "controlType": "radio",
+              "text": "Unable to observe"
+            }
+          ]
+        },
+        {
+          "questionID": 53,
+          "text": "C. Regarding gloves, staff:<br><br>a. Wear gloves for procedures that might involve contact with blood or body fluids",
+          "htmlControl": [
+            {
+              "controlID": 157,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 158,
+              "controlType": "radio",
+              "text": "No"
+            },
+            {
+              "controlID": 159,
+              "controlType": "radio",
+              "text": "Unable to observe"
+            }
+          ]
+        },
+        {
+          "questionID": 54,
+          "text": "b. Wear gloves when handling potentially contaminated patient equipment",
+          "htmlControl": [
+            {
+              "controlID": 160,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 161,
+              "controlType": "radio",
+              "text": "No"
+            },
+            {
+              "controlID": 162,
+              "controlType": "radio",
+              "text": "Unable to observe"
+            }
+          ]
+        },
+        {
+          "questionID": 55,
+          "text": "c. Remove gloves before moving to the next tasks and/or patient",
+          "htmlControl": [
+            {
+              "controlID": 163,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 164,
+              "controlType": "radio",
+              "text": "No"
+            },
+            {
+              "controlID": 165,
+              "controlType": "radio",
+              "text": "Unable to observe"
+            }
+          ]
+        },
+        {
+          "questionID": 56,
+          "text": "D. Personnel providing direct patient care do not wear artificial fingernails and/ or extenders when having direct contact with patients.",
+          "htmlControl": [
+            {
+              "controlID": 166,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 167,
+              "controlType": "radio",
+              "text": "No"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Page 8",
+      "question": [
+        {
+          "questionID": 57,
+          "text": "A. Needles are used for only one patient.",
+          "htmlControl": [
+            {
+              "controlID": 168,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 169,
+              "controlType": "radio",
+              "text": "No"
+            },
+            {
+              "controlID": 170,
+              "controlType": "radio",
+              "text": "Unable to observe"
+            }
+          ]
+        },
+        {
+          "questionID": 58,
+          "text": "B. Syringes are used for only one patient (this includes manufactured prefilled syringes).",
+          "htmlControl": [
+            {
+              "controlID": 171,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 172,
+              "controlType": "radio",
+              "text": "No"
+            },
+            {
+              "controlID": 173,
+              "controlType": "radio",
+              "text": "Unable to observe"
+            }
+          ]
+        },
+        {
+          "questionID": 59,
+          "text": "C. The rubber septum on a medication, whether unopened or previously accessed, vial is disinfected with alcohol prior to piercing.",
+          "htmlControl": [
+            {
+              "controlID": 174,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 175,
+              "controlType": "radio",
+              "text": "No"
+            },
+            {
+              "controlID": 176,
+              "controlType": "radio",
+              "text": "Unable to observe"
+            }
+          ]
+        },
+        {
+          "questionID": 60,
+          "text": "D. Medication vials are always entered with a new needle.",
+          "htmlControl": [
+            {
+              "controlID": 177,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 178,
+              "controlType": "radio",
+              "text": "No"
+            },
+            {
+              "controlID": 179,
+              "controlType": "radio",
+              "text": "Unable to observe"
+            }
+          ]
+        },
+        {
+          "questionID": 61,
+          "text": "E. Medication vials are always entered with a new syringe",
+          "htmlControl": [
+            {
+              "controlID": 180,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 181,
+              "controlType": "radio",
+              "text": "No"
+            },
+            {
+              "controlID": 182,
+              "controlType": "radio",
+              "text": "Unable to observe"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Page 9",
+      "question": [
+        {
+          "questionID": 62,
+          "text": "F. Medications that are pre-drawn are labeled with the date and time of draw, initials of the person drawing, medication name, strength and beyond-use date and time<br><br>Note: A �No� answer should result in citation as a deficient practice in relation to 42 CFR 416.48(a), Administration of Drugs",
+          "htmlControl": [
+            {
+              "controlID": 183,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 184,
+              "controlType": "radio",
+              "text": "No"
+            },
+            {
+              "controlID": 185,
+              "controlType": "radio",
+              "text": "Unable to observe"
+            }
+          ]
+        },
+        {
+          "questionID": 63,
+          "text": "G.<br><br>a. Single dose (single-use) medication vials are used for only one patient",
+          "htmlControl": [
+            {
+              "controlID": 186,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 187,
+              "controlType": "radio",
+              "text": "No"
+            },
+            {
+              "controlID": 188,
+              "controlType": "radio",
+              "text": "Unable to observe"
+            }
+          ]
+        },
+        {
+          "questionID": 64,
+          "text": "b. Bags of IV solutions are used for only one patient (and not as a source of flush solution for multiple patients).",
+          "htmlControl": [
+            {
+              "controlID": 189,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 190,
+              "controlType": "radio",
+              "text": "No"
+            },
+            {
+              "controlID": 191,
+              "controlType": "radio",
+              "text": "Unable to observe"
+            }
+          ]
+        },
+        {
+          "questionID": 65,
+          "text": "c. Medication administration tubing and connectors are used for only one patient",
+          "htmlControl": [
+            {
+              "controlID": 192,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 193,
+              "controlType": "radio",
+              "text": "No"
+            },
+            {
+              "controlID": 194,
+              "controlType": "radio",
+              "text": "Unable to observe"
+            }
+          ]
+        },
+        {
+          "questionID": 66,
+          "text": "H.  The ASC has voluntarily adopted a policy that medications labeled for multi-dose use for multiple patients are nevertheless only used for one patient.<br><br>(Fill in N/A if no multi-dose medications/infusates are used).<br><br>Note: a �No� answer to question H. does not indicate a breach in infection control practices and does not result in a citation. However, a �No� response to either or both of the related questions I and J should be cited).",
+          "htmlControl": [
+            {
+              "controlID": 195,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 196,
+              "controlType": "radio",
+              "text": "No"
+            },
+            {
+              "controlID": 197,
+              "controlType": "radio",
+              "text": "N/A"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Page 10",
+      "question": [
+        {
+          "questionID": 67,
+          "text": "I. Multi-dose vials are dated when they are first opened and discarded within 28 days unless the manufacturer specifies a different (shorter or longer) date for that opened vial. Note: This is different from the expiration date for the vial. The multi-dose vial can be dated with either the date opened or the beyond-use date as per ASC policies and procedures, so long as it is clear what the date represents and the same policy is used consistently throughout the ASC.",
+          "htmlControl": [
+            {
+              "controlID": 198,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 199,
+              "controlType": "radio",
+              "text": "No"
+            },
+            {
+              "controlID": 200,
+              "controlType": "radio",
+              "text": "Unable to observe"
+            }
+          ]
+        },
+        {
+          "questionID": 68,
+          "text": "J.  Multi-dose medication vials used for more than one patient are stored appropriately and do not enter the immediate patient care area (e.g., operating room, anesthesia carts).<br><br>NOTE: If multi-dose vials enter the immediate patient care area, they must be dedicated for single patient use and discarded immediately after use.",
+          "htmlControl": [
+            {
+              "controlID": 201,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 202,
+              "controlType": "radio",
+              "text": "No"
+            },
+            {
+              "controlID": 203,
+              "controlType": "radio",
+              "text": "Unable to observe"
+            }
+          ]
+        },
+        {
+          "questionID": 69,
+          "text": "K. All sharps are disposed of in a puncture-resistant sharps container",
+          "htmlControl": [
+            {
+              "controlID": 204,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 205,
+              "controlType": "radio",
+              "text": "No"
+            }
+          ]
+        },
+        {
+          "questionID": 70,
+          "text": "L. Sharps containers are replaced when the fill line is reached",
+          "htmlControl": [
+            {
+              "controlID": 206,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 207,
+              "controlType": "radio",
+              "text": "No"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Page 11",
+      "question": [
+        {
+          "questionID": 71,
+          "text": "A. a. If single-use devices are reprocessed, they are devices that are approved by the FDA for reprocessing",
+          "htmlControl": [
+            {
+              "controlID": 208,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 209,
+              "controlType": "radio",
+              "text": "No"
+            },
+            {
+              "controlID": 210,
+              "controlType": "radio",
+              "text": "N/A"
+            }
+          ]
+        },
+        {
+          "questionID": 72,
+          "text": "b. If single-use devices are reprocessed, they are reprocessed by an FDA-approved reprocessor.",
+          "htmlControl": [
+            {
+              "controlID": 211,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 212,
+              "controlType": "radio",
+              "text": "No"
+            },
+            {
+              "controlID": 213,
+              "controlType": "radio",
+              "text": "N/A"
+            }
+          ]
+        },
+        {
+          "questionID": 73,
+          "text": "A. Critical equipment is sterilized",
+          "htmlControl": [
+            {
+              "controlID": 214,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 215,
+              "controlType": "radio",
+              "text": "No"
+            }
+          ]
+        },
+        {
+          "questionID": 74,
+          "text": "B. Are sterilization procedures performed on-site?<br><br>(A �No� answer does not result in a citation, since ASCs are permitted to provide for sterilization off-site, under a contractual arrangement.)<br><br>(Surveyor to confirm there is a contract or other documentation of an arrangement for off-site sterilization by viewing it)",
+          "htmlControl": [
+            {
+              "controlID": 216,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 217,
+              "controlType": "radio",
+              "text": "No"
+            }
+          ]
+        },
+        {
+          "questionID": 75,
+          "text": "a. If YES to B, please indicate method of sterilization:",
+          "htmlControl": [
+            {
+              "controlID": 218,
+              "controlType": "radio",
+              "text": "Steam autoclave"
+            },
+            {
+              "controlID": 219,
+              "controlType": "radio",
+              "text": "Peracetic acid"
+            },
+            {
+              "controlID": 220,
+              "controlType": "radio",
+              "text": "Other (please specify):"
+            },
+            {
+              "controlID": 221,
+              "controlType": "textarea",
+              "parentControlID": 220
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Page 12",
+      "question": [
+        {
+          "questionID": 76,
+          "text": "C. Items are pre-cleaned according to manufacturer�s instructions or, if the manufacturer does not provide instructions, evidence-based guidelines prior to sterilization",
+          "htmlControl": [
+            {
+              "controlID": 222,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 223,
+              "controlType": "radio",
+              "text": "No"
+            },
+            {
+              "controlID": 224,
+              "controlType": "radio",
+              "text": "Unable to observe"
+            }
+          ]
+        },
+        {
+          "questionID": 77,
+          "text": "D. a. Medical devices and instruments are visually inspected for residual soil and re-cleaned as needed before packaging and sterilization",
+          "htmlControl": [
+            {
+              "controlID": 225,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 226,
+              "controlType": "radio",
+              "text": "No"
+            },
+            {
+              "controlID": 227,
+              "controlType": "radio",
+              "text": "Unable to observe"
+            }
+          ]
+        },
+        {
+          "questionID": 78,
+          "text": "b. A chemical indicator (process indicator) is placed correctly, as described in manufacturer�s instructions for use, in the instrument packs in every load.",
+          "htmlControl": [
+            {
+              "controlID": 228,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 229,
+              "controlType": "radio",
+              "text": "No"
+            },
+            {
+              "controlID": 230,
+              "controlType": "radio",
+              "text": "Unable to observe"
+            }
+          ]
+        },
+        {
+          "questionID": 79,
+          "text": "c. A biological indicator is used at least weekly for each sterilizer and with every load containing implantable items, as evidenced by ASC documentation (i.e., log).",
+          "htmlControl": [
+            {
+              "controlID": 231,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 232,
+              "controlType": "radio",
+              "text": "No"
+            },
+            {
+              "controlID": 233,
+              "controlType": "radio",
+              "text": "Unable to observe"
+            }
+          ]
+        },
+        {
+          "questionID": 80,
+          "text": "d. Each load is monitored with mechanical indicators (e.g. time, temperature, pressure)",
+          "htmlControl": [
+            {
+              "controlID": 234,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 235,
+              "controlType": "radio",
+              "text": "No"
+            },
+            {
+              "controlID": 236,
+              "controlType": "radio",
+              "text": "Unable to observe"
+            }
+          ]
+        },
+        {
+          "questionID": 81,
+          "text": "e. Documentation for each piece of sterilization equipment is maintained and up to date and includes results from each load",
+          "htmlControl": [
+            {
+              "controlID": 237,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 238,
+              "controlType": "radio",
+              "text": "No"
+            }
+          ]
+        },
+        {
+          "questionID": 82,
+          "text": "E. Items are appropriately contained and handled during the sterilization process to assure that sterility is not compromised prior to use",
+          "htmlControl": [
+            {
+              "controlID": 239,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 240,
+              "controlType": "radio",
+              "text": "No"
+            },
+            {
+              "controlID": 241,
+              "controlType": "radio",
+              "text": "Unable to observe"
+            }
+          ]
+        },
+        {
+          "questionID": 83,
+          "text": "F. After sterilization, medical devices and instruments are stored in a designated clean area so that sterility is not compromised",
+          "htmlControl": [
+            {
+              "controlID": 242,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 243,
+              "controlType": "radio",
+              "text": "No"
+            }
+          ]
+        },
+        {
+          "questionID": 84,
+          "text": "G. Sterile packages are inspected for integrity and compromised packages are reprocessed",
+          "htmlControl": [
+            {
+              "controlID": 244,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 245,
+              "controlType": "radio",
+              "text": "No"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Page 13",
+      "question": [
+        {
+          "questionID": 85,
+          "text": "H.  Is immediate-use steam sterilization (IUSS) performed on-site?<br><br>(A �No� answer does not result in a citation)",
+          "htmlControl": [
+            {
+              "controlID": 246,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 247,
+              "controlType": "radio",
+              "text": "No"
+            }
+          ]
+        },
+        {
+          "questionID": 86,
+          "text": "I. If IUSS is performed, all of the following criteria are met:<br><br><ul><li>Work practices ensure proper cleaning and decontamination, inspection, and arrangement of the instruments into the recommended sterilizing trays or other containment devices before sterilization.</li><li>Once clean, the item is placed within a container intended for immediate use. The sterilizer cycle and parameters used are selected according to the manufacturers� instructions for use for the device, container, and sterilizer.</li><li>The sterilizer function is monitored with monitors (e.g., mechanical, chemical and biologic) that are approved for the cycle being used.</li><li>The processed item must be transferred immediately, using aseptic technique, from the sterilizer to the actual point of use, the sterile field in an ongoing surgical procedure.</li></ul><br><br>Note: �Immediate use� is defined as the shortest possible time between a sterilized item�s removal from the sterilizer and its aseptic transfer to the sterile field.  A sterilized item intended for immediate use is not stored for future use, nor held from one case to another. IUSS is not equivalent to �short cycle� sterilization performed in accordance with manufacturers� IFUs.  IUSS must not be a routine or frequent practice in the ASC.",
+          "htmlControl": [
+            {
+              "controlID": 248,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 249,
+              "controlType": "radio",
+              "text": "No"
+            },
+            {
+              "controlID": 250,
+              "controlType": "radio",
+              "text": "Unable to observe"
+            },
+            {
+              "controlID": 251,
+              "controlType": "radio",
+              "text": "N/A"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Page 14",
+      "question": [
+        {
+          "questionID": 87,
+          "text": "J. Immediate-use steam sterilization is NOT performed on the following devices:<br><br><ul><li>Implants.</li><li>Post-procedure decontamination of instruments used on patients who may have Creutzfeldt-Jakob disease or similar disorders.</li><li>Devices that have not been validated with the specific cycle employed.</li><li>Single-use devices that are sold sterile.</li></ul>",
+          "htmlControl": [
+            {
+              "controlID": 252,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 253,
+              "controlType": "radio",
+              "text": "No"
+            }
+          ]
+        },
+        {
+          "questionID": 88,
+          "text": "K. Is IUSS performed on a routine basis?<br><br>(A �YES� answer must be cited as a deficient practice in relation to 42 CFR 416.51(a).)",
+          "htmlControl": [
+            {
+              "controlID": 254,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 255,
+              "controlType": "radio",
+              "text": "No"
+            }
+          ]
+        },
+        {
+          "questionID": 89,
+          "text": "A. Semi-critical equipment is high-level disinfected or sterilized",
+          "htmlControl": [
+            {
+              "controlID": 256,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 257,
+              "controlType": "radio",
+              "text": "No"
+            },
+            {
+              "controlID": 258,
+              "controlType": "radio",
+              "text": "N/A"
+            }
+          ]
+        },
+        {
+          "questionID": 90,
+          "text": "B. Is high-level disinfection performed on site?<br><br>(A �No� answer does not result in a citation, since ASCs are permitted to provide for high-level disinfection off-site, under a contractual arrangement.)<br><br>(Surveyor to confirm there is a contract or other documentation of an arrangement for off-site sterilization by viewing it)",
+          "htmlControl": [
+            {
+              "controlID": 259,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 260,
+              "controlType": "radio",
+              "text": "No"
+            },
+            {
+              "controlID": 261,
+              "controlType": "radio",
+              "text": "N/A"
+            }
+          ]
+        },
+        {
+          "questionID": 91,
+          "text": "a. If answer to B was YES, please indicate method of high-level disinfection:",
+          "htmlControl": [
+            {
+              "controlID": 262,
+              "controlType": "radio",
+              "text": "Manual"
+            },
+            {
+              "controlID": 263,
+              "controlType": "radio",
+              "text": "Automated"
+            },
+            {
+              "controlID": 264,
+              "controlType": "radio",
+              "text": "Other (please specify):"
+            },
+            {
+              "controlID": 265,
+              "controlType": "textarea",
+              "parentControlID": 264
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Page 15",
+      "question": [
+        {
+          "questionID": 92,
+          "text": "C. Items are pre-cleaned according to manufacturer�s instructions or, if the manufacturer does not provide instructions, evidence-based guidelines prior to high-level disinfection",
+          "htmlControl": [
+            {
+              "controlID": 266,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 267,
+              "controlType": "radio",
+              "text": "No"
+            },
+            {
+              "controlID": 277,
+              "controlType": "radio",
+              "text": "Unable to observe"
+            }
+          ]
+        },
+        {
+          "questionID": 93,
+          "text": "D.a. Medical devices and instruments are visually inspected for residual soil and re-cleaned as needed before high-level disinfection",
+          "htmlControl": [
+            {
+              "controlID": 278,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 279,
+              "controlType": "radio",
+              "text": "No"
+            },
+            {
+              "controlID": 280,
+              "controlType": "radio",
+              "text": "Unable to observe"
+            }
+          ]
+        },
+        {
+          "questionID": 94,
+          "text": "b. High-level disinfection equipment is maintained according to manufacturer instructions",
+          "htmlControl": [
+            {
+              "controlID": 281,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 282,
+              "controlType": "radio",
+              "text": "No"
+            },
+            {
+              "controlID": 283,
+              "controlType": "radio",
+              "text": "Unable to observe"
+            }
+          ]
+        },
+        {
+          "questionID": 95,
+          "text": "c. Chemicals used for high-level disinfection are:<br><br>I. Prepared according to manufacturer instructions",
+          "htmlControl": [
+            {
+              "controlID": 284,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 285,
+              "controlType": "radio",
+              "text": "No"
+            },
+            {
+              "controlID": 286,
+              "controlType": "radio",
+              "text": "Unable to observe"
+            }
+          ]
+        },
+        {
+          "questionID": 96,
+          "text": "II. Tested for appropriate concentration according to manufacturer�s instructions",
+          "htmlControl": [
+            {
+              "controlID": 287,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 288,
+              "controlType": "radio",
+              "text": "No"
+            },
+            {
+              "controlID": 289,
+              "controlType": "radio",
+              "text": "Unable to observe"
+            }
+          ]
+        },
+        {
+          "questionID": 97,
+          "text": "III. Replaced according to manufacturer�s instructions",
+          "htmlControl": [
+            {
+              "controlID": 290,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 291,
+              "controlType": "radio",
+              "text": "No"
+            },
+            {
+              "controlID": 292,
+              "controlType": "radio",
+              "text": "Unable to observe"
+            }
+          ]
+        },
+        {
+          "questionID": 98,
+          "text": "IV. Documented to have been prepared and replaced according to manufacturer�s instructions",
+          "htmlControl": [
+            {
+              "controlID": 293,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 294,
+              "controlType": "radio",
+              "text": "No"
+            }
+          ]
+        },
+        {
+          "questionID": 99,
+          "text": "d. Instruments requiring high-level disinfection are:<br><br>I. Disinfected for the appropriate length of time as specified by manufacturer�s instructions or, if the manufacturer does not provide instructions, evidence-based guidelines",
+          "htmlControl": [
+            {
+              "controlID": 295,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 296,
+              "controlType": "radio",
+              "text": "No"
+            },
+            {
+              "controlID": 297,
+              "controlType": "radio",
+              "text": "Unable to observe"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Page 16",
+      "question": [
+        {
+          "questionID": 100,
+          "text": "II. Disinfected at the appropriate temperature as specified by manufacturer�s instructions or, if the manufacturer does not provide instructions, evidence-based guidelines",
+          "htmlControl": [
+            {
+              "controlID": 298,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 299,
+              "controlType": "radio",
+              "text": "No"
+            },
+            {
+              "controlID": 300,
+              "controlType": "radio",
+              "text": "Unable to observe"
+            }
+          ]
+        },
+        {
+          "questionID": 101,
+          "text": "E. Items that undergo high-level disinfection are allowed to dry before use",
+          "htmlControl": [
+            {
+              "controlID": 301,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 302,
+              "controlType": "radio",
+              "text": "No"
+            },
+            {
+              "controlID": 303,
+              "controlType": "radio",
+              "text": "Unable to observe"
+            }
+          ]
+        },
+        {
+          "questionID": 102,
+          "text": "F. Following high-level disinfection, items are placed in a designated clean area in a manner to prevent contamination",
+          "htmlControl": [
+            {
+              "controlID": 304,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 305,
+              "controlType": "radio",
+              "text": "No"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Page 17",
+      "question": [
+        {
+          "questionID": 103,
+          "text": "A. Operating rooms are cleaned and disinfected after each surgical or invasive procedure with an EPA-registered disinfectant",
+          "htmlControl": [
+            {
+              "controlID": 306,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 307,
+              "controlType": "radio",
+              "text": "No"
+            },
+            {
+              "controlID": 308,
+              "controlType": "radio",
+              "text": "Unable to observe"
+            }
+          ]
+        },
+        {
+          "questionID": 104,
+          "text": "B. Operating rooms are terminally cleaned daily",
+          "htmlControl": [
+            {
+              "controlID": 309,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 310,
+              "controlType": "radio",
+              "text": "No"
+            },
+            {
+              "controlID": 311,
+              "controlType": "radio",
+              "text": "Unable to observe"
+            }
+          ]
+        },
+        {
+          "questionID": 105,
+          "text": "C. Environmental surfaces in patient care areas are cleaned and disinfected, using an EPA-registered disinfectant on a regular basis (e.g., daily), when spills occur and when surfaces are visibly contaminated.",
+          "htmlControl": [
+            {
+              "controlID": 312,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 313,
+              "controlType": "radio",
+              "text": "No"
+            },
+            {
+              "controlID": 314,
+              "controlType": "radio",
+              "text": "Unable to observe"
+            }
+          ]
+        },
+        {
+          "questionID": 106,
+          "text": "D. The ASC has a procedure in place to decontaminate gross spills of blood.",
+          "htmlControl": [
+            {
+              "controlID": 315,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 316,
+              "controlType": "radio",
+              "text": "No"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Page 18",
+      "question": [
+        {
+          "questionID": 107,
+          "text": "1. Does the ASC use a point-of-care testing device, such as a blood glucose meter?",
+          "htmlControl": [
+            {
+              "controlID": 317,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 318,
+              "controlType": "radio",
+              "text": "No"
+            }
+          ]
+        },
+        {
+          "questionID": 108,
+          "text": "A. Hand hygiene is performed before and after performing a finger stick procedure to obtain a sample of blood and using the point-of-care testing device.",
+          "htmlControl": [
+            {
+              "controlID": 319,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 320,
+              "controlType": "radio",
+              "text": "No"
+            }
+          ]
+        },
+        {
+          "questionID": 109,
+          "text": "B. Gloves are worn by health care personnel when performing a finger stick procedure to obtain a sample of blood, and are removed after the procedure (followed by hand hygiene).",
+          "htmlControl": [
+            {
+              "controlID": 321,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 322,
+              "controlType": "radio",
+              "text": "No"
+            }
+          ]
+        },
+        {
+          "questionID": 110,
+          "text": "C. Finger stick devices are not used for more than one patient.<br><br>NOTE: This includes both the lancet and the lancet holding device.",
+          "htmlControl": [
+            {
+              "controlID": 323,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 324,
+              "controlType": "radio",
+              "text": "No"
+            },
+            {
+              "controlID": 325,
+              "controlType": "radio",
+              "text": "Unable to observe"
+            }
+          ]
+        },
+        {
+          "questionID": 111,
+          "text": "D. If used for more than one patient, the point-of-care testing device (e.g., blood glucose meter, INR monitor) is cleaned and disinfected after every use according to the manufacturer�s instructions.<br><br>NOTE: if the manufacturer does not provide instructions for cleaning and disinfection, then the device should not be used for >1 patient.",
+          "htmlControl": [
+            {
+              "controlID": 326,
+              "controlType": "radio",
+              "text": "Yes"
+            },
+            {
+              "controlID": 327,
+              "controlType": "radio",
+              "text": "No"
+            },
+            {
+              "controlID": 328,
+              "controlType": "radio",
+              "text": "N/A"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,332 @@
+ {
+  "surveyID": 100,
+  "stylesheet": "http://urltostylesheethere.css",
+  "title": "Hospital Infection Control Worksheet",
+  "version": "v0.4a",
+  "versionHistory": "v0.4a - initial alpha version",
+  "creationDate": "11/19/2015",
+  "lastModifiedDate": "11/19/2015",
+  "author": "C.K. Holmes",
+  "description": "Hospital Infection Control Worksheet for CMS Specialty Surveys Website",
+  "instructions": "<p>Instructions:<br><br>The following is a list of items that must be assessed during the on-site survey, in order to determine compliance with the Infection Control Condition of Participation. Items are to be assessed by a combination of observation, interviews with hospital staff, patients and their family/support persons, review of medical records, and a review of any necessary infection control program documentation. During the survey, observations or concerns may prompt the surveyor to request and review specific hospital policies and procedures. Surveyors are expected to use their judgment and review only those documents necessary to investigate their concern(s) or to validate their observations.<br><br>The interviews should be performed with the most appropriate staff person(s) for the items of interest, as well as with patients, family members, and support persons.</p>",
+  "section": [
+    {
+      "title": "Hospital Characteristics",
+      "question": [
+        {
+          "questionText": "Name",
+          "htmlControl": [
+            {
+              "controlID": 100,
+              "controlType": "textbox",
+              "fieldSize": 50,
+              "fieldMaxLength": 255,
+              "fieldRequired": true
+            }
+          ]
+        },
+        {
+          "questionText": "1. Hospital Name",
+          "htmlControl": [
+            {
+              "controlID": 200,
+              "controlType": "select",
+              "fieldRequired": true
+            }
+          ]
+        },
+        {
+          "questionText": "2. CMS Certification Number",
+          "htmlControl": [
+            {
+              "controlID": 300,
+              "controlType": "number",
+              "fieldMaxLength": 6,
+              "fieldRequired": true
+            }
+          ]
+        },
+        {
+          "questionText": "3. Date of site visit",
+          "htmlControl": [
+            {
+              "controlID": 400,
+              "controlText": "From",
+              "controlType": "date",
+              "fieldRequired": true
+            },
+            {
+              "controlID": 500,
+              "controlText": "To",
+              "controlType": "date",
+              "fieldRequired": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Section 1.A. Infection Prevention Program and Resources",
+      "question": [
+        {
+          "questionText": "1.A.1 The hospital has designated one or more individual(s) as its Infection Control Officer(s).",
+          "fileUpload": true,
+          "htmlControl": [
+            
+            {
+              "controlID": 600,
+              "controlText": "Yes",
+              "controlType": "radio",
+              "fieldDefaultVisibility": true
+            },
+            {
+              "controlID": 600,
+              "controlText": "No",
+              "controlType": "radio",
+              "fieldDefaultVisibility": true
+            },
+            {
+              "controlID": 700,
+              "controlType": "textarea",
+              "placeholder": "Please enter surveyor notes here...",
+              "parentControlID": 600,
+              "fieldDefaultVisibility": true
+            },
+           
+            {
+              "controlID": 610,
+              "controlText": "Yes",
+              "controlType": "radio",
+              "fieldDefaultVisibility": false
+            },
+            {
+              "controlID": 610,
+              "controlText": "No",
+              "controlType": "radio",
+              "fieldDefaultVisibility": false
+            },
+            {
+              "controlID": 710,
+              "controlType": "textarea",
+              "placeholder": "Please enter surveyor notes here...",
+              "parentControlID": 610,
+              "fieldDefaultVisibility": false
+            },
+           
+            {
+              "controlID": 620,
+              "controlText": "Yes",
+              "controlType": "radio",
+              "fieldDefaultVisibility": false
+            },
+            {
+              "controlID": 620,
+              "controlText": "No",
+              "controlType": "radio",
+              "fieldDefaultVisibility": false
+            },
+            {
+              "controlID": 720,
+              "controlType": "textarea",
+              "placeholder": "Please enter surveyor notes here...",
+              "parentControlID": 620,
+              "fieldDefaultVisibility": false
+            },
+          
+            {
+              "controlID": 630,
+              "controlText": "Yes",
+              "controlType": "radio",
+              "fieldDefaultVisibility": false
+            },
+            {
+              "controlID": 630,
+              "controlText": "No",
+              "controlType": "radio",
+              "fieldDefaultVisibility": false
+            },
+            {
+              "controlID": 730,
+              "controlType": "textarea",
+              "placeholder": "Please enter surveyor notes here...",
+              "parentControlID": 630,
+              "fieldDefaultVisibility": false 
+            },
+            
+            {
+              "controlID": 640,
+              "controlText": "Yes",
+              "controlType": "radio",
+              "fieldDefaultVisibility": false
+            },
+            {
+              "controlID": 640,
+              "controlText": "No",
+              "controlType": "radio",
+              "fieldDefaultVisibility": false
+            },
+            {
+              "controlID": 740,
+              "controlType": "textarea",
+              "placeholder": "Please enter surveyor notes here...",
+              "parentControlID": 640,
+              "fieldDefaultVisibility": false  
+            }
+           
+          ]
+        },
+        {
+          "questionText": "1.A.2 The hospital has evidence that demonstrates the Infection Control Officer(s) is qualified and maintain(s) qualifications through education, training, experience or certification related to infection control consistent with hospital policy.",
+          "htmlControl": [
+          
+            {
+              "controlID": 800,
+              "controlText": "Yes",
+              "controlType": "radio",
+              "fieldDefaultVisibility": true
+            },
+            {
+              "controlID": 800,
+              "controlText": "No",
+              "controlType": "radio",
+              "fieldDefaultVisibility": true
+            },
+            {
+              "controlID": 900,
+              "controlType": "textarea",
+              "placeholder": "Please enter surveyor notes here...",
+              "parentControlID": 800,
+              "fieldDefaultVisibility": true
+            }
+            
+          ]
+        },
+        {
+          "questionText": "1.A.3 The Infection Control Officer(s) can provide evidence that the hospital has developed general infection control policies and procedures that are based on nationally recognized guidelines and applicable state and federal law.",
+          "htmlControl": [
+           
+            {
+              "controlID": 1000,
+              "controlText": "Yes",
+              "controlType": "radio",
+              "fieldDefaultVisibility": true
+            },
+            {
+              "controlID": 1000,
+              "controlText": "No",
+              "controlType": "radio",
+              "fieldDefaultVisibility": true
+            },
+            {
+              "controlID": 1100,
+              "controlType": "textarea",
+              "placeholder": "Please enter surveyor notes here...",
+              "parentControlID": 1000,
+              "fieldDefaultVisibility": true
+            },
+            
+            
+            {
+              "controlID": 1200,
+              "controlText": "Yes",
+              "controlType": "radio",
+              "fieldDefaultVisibility": false
+            },
+            {
+              "controlID": 1200,
+              "controlText": "No",
+              "controlType": "radio",
+              "fieldDefaultVisibility": false
+            },
+            {
+              "controlID": 1300,
+              "controlType": "textarea",
+              "placeholder": "Please enter surveyor notes here...",
+              "parentControlID": 1000,
+              "fieldDefaultVisibility": false
+            }
+
+          ]
+        }
+     
+      ]
+    } ,
+     {
+      "title": "Section 1.B. Hospital QAPI Systems Related to Infection Prevention",
+      "question": [
+        {
+          "questionText": "1.B.1 The Infection Control Officer(s) can provide evidence that problems identified in the infection control program are addressed in the hospital QAPI program (i.e., development and implementation of corrective interventions, and ongoing evaluation of interventions implemented for both success and sustainability).",
+          "htmlControl": [
+         
+            {
+              "controlID": 1800,
+              "controlText": "Yes",
+              "controlType": "radio",
+              "fieldDefaultVisibility": true
+            },
+            {
+              "controlID": 1800,
+              "controlText": "No",
+              "controlType": "radio",
+              "fieldDefaultVisibility": true
+            },
+            {
+              "controlID": 1900,
+              "controlType": "textarea",
+              "placeholder": "Please enter surveyor notes here...",
+              "parentControlID": 1800,
+              "fieldDefaultVisibility": true
+            } 
+          ]
+       },
+       {
+          "questionText": "1.A.3 Test questions",
+          "htmlControl": [
+           
+            {
+              "controlID": 2000,
+              "controlText": "Yes",
+              "controlType": "radio",
+              "fieldDefaultVisibility": true
+            },
+            {
+              "controlID":21000,
+              "controlText": "No",
+              "controlType": "radio",
+              "fieldDefaultVisibility": true
+            },
+            {
+              "controlID": 2100,
+              "controlType": "textarea",
+              "placeholder": "Please enter surveyor notes here...",
+              "parentControlID": 1000,
+              "fieldDefaultVisibility": true
+            },
+            
+            
+            {
+              "controlID": 2200,
+              "controlText": "Yes",
+              "controlType": "radio",
+              "fieldDefaultVisibility": false 
+            },
+            {
+              "controlID": 2200,
+              "controlText": "No",
+              "controlType": "radio",
+              "fieldDefaultVisibility": false
+            },
+            {
+              "controlID": 2300,
+              "controlType": "textarea",
+              "placeholder": "Please enter surveyor notes here...",
+              "parentControlID": 1000,
+              "fieldDefaultVisibility": false
+            }
+
+          ]
+        }
+     ]
+   }
+  ]
+}

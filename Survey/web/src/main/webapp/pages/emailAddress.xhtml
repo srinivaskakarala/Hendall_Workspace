@@ -1,0 +1,49 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui"
+	>
+
+	<h:panelGrid style="width:100%"
+		rendered="#{surveyQuestionsBean.pageIndex eq surveyQuestionsBean.masterSurveyQuestionSectionList.size()}">
+
+	<!-- 	<p:panel styleClass="fileUploadPanel" style="width:100%">
+			<h:panelGrid>
+				<p:outputLabel styleClass="h4" value="Supplementary Documentation"></p:outputLabel>
+
+				<br />
+				<p:outputPanel>
+					<p:outputLabel escape="false"
+						value="You may upload additional support documentation here. These documents will then be attached along with your survey results, and submitted to your supervisor. 
+						&lt;br/&gt;The following file formats are supported:&lt;br/&gt;
+						&lt;li&gt;Adobe Acrobat (.pdf)
+						&lt;li&gt;Microsoft Office (.doc, .docx, .xls, .xlsx, .ppt, .vsd)
+						&lt;li&gt;Images (.jpg, .tiff, .gif, .bmp, .png)"></p:outputLabel>
+
+				</p:outputPanel>
+			</h:panelGrid>
+		</p:panel> -->
+		<p:panel styleClass="sectionPanel" style="width:100%">
+			<h:panelGrid>
+				<p:outputLabel styleClass="h4" value="Survey Approver Details"></p:outputLabel>
+				<br />
+				<p:outputLabel
+					value="Please enter the email address of your supervisor in this section."></p:outputLabel>
+				<p:outputLabel
+					value="Upon submission of the survey, an email will be sent to your supervisor, for their appproval."></p:outputLabel>
+
+				<p:outputPanel styleClass="styleForEmailAddrsLabel_SubmissionsPage">
+					<p:outputLabel value="Supervisor Email Address: "></p:outputLabel>
+				</p:outputPanel>
+				<p:outputPanel
+					styleClass="styleForEmailAddrsInputTxt_SubmissionsPage">
+					<p:inputText value="#{surveyQuestionsBean.approverEmailAddress}"></p:inputText>
+				</p:outputPanel>
+			</h:panelGrid>
+		</p:panel>
+	</h:panelGrid>
+
+
+</ui:composition>

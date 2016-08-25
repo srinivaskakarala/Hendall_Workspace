@@ -1,0 +1,142 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Generic JSON Schema for CMS Surveys",
+  "description": "Generic JSON schema for CMS surveys",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "surveyID": {
+      "description": "unique identifier allowing an answer JSON file to be linked to a particular survey/version JSON file",
+      "type": "integer"
+    },
+    "stylesheet": {
+      "description": "a url link to a CSS stylesheet which will be applied to html generated from the JSON data file",
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "versionHistory": {
+      "type": "string"
+    },
+    "creationDate": {
+      "type": "string"
+    },
+    "lastModifiedDate": {
+      "type": "string"
+    },
+    "author": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "instructions": {
+      "type": "string"
+    },
+    "help": {
+      "description": "Survey specific links for the 'Help' menu and stored are stored here",
+      "type": "array",
+      "items": {
+        "helpSectionName": "string",
+        "helpSectionLink": "array",
+        "items": {
+          "helpLinkName": "string",
+          "helpLinkURL": "string"
+        }
+      }
+    },
+    "section": {
+      "description": "Logical grouping of questions",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "question": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "questionText": {
+                  "description": "text for each question stored here",
+                  "type": "string"
+                },
+                "fileUpload": {
+                  "description": "flag indicating whether to a file upload button assocaited with a question",
+                  "type": "boolean"
+                },
+                "citableTagName": {
+                  "description": "optional field storing citable tag associated with this question",
+                  "type": "string"
+                },
+                "citableTagURL": {
+                  "description": "optional field storing URL to citable tag",
+                  "type": "string"
+                },
+                "htmlControl": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "controlID": {
+                        "description": "unique identifier for a particular html control, matches column in db",
+                        "type": "integer"
+                      },
+                      "controlType": {
+                        "type": "string"
+                      },
+                      "placeholder": {
+                        "type": "string"
+                      },
+                      "fieldSize":
+                      {
+                        "type": "integer"
+                      },
+                      "fieldMaxLength":
+                      {
+                        "type": "integer"
+                      },
+                      "controlText": {
+                        "description": "text for each control stored here",
+                        "type": "string"
+                      },
+                      "parentControlID": {
+                        "description": "allows html controls to be linked for navigation/validation purposes",
+                        "type": "integer"
+                      },
+                      "fieldRequired": {
+                        "type": "boolean"
+                      },
+                      "fieldDefaultVisibility": {
+                        "type": "boolean"
+                      }
+                    },
+                    "required": [
+                      "controlID", "controlType"
+                    ]
+                  }
+                }
+              },
+              "required": [
+                "questionText"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "surveyID",
+    "stylesheet"
+  ]
+}

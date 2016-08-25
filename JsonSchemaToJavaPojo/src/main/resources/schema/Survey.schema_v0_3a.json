@@ -1,0 +1,105 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Surveys JSON Schema",
+  "description": "first attempt at creating a JSON schema for all survey questions",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "surveyID": {
+      "description": "unique identifier allowing an answer JSON file to be linked to a particular survey/version JSON file",
+      "type": "integer"
+    },
+    "title": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "versionHistory": {
+      "type": "string"
+    },
+    "creationDate": {
+      "type": "string"
+    },
+    "lastModifiedDate": {
+      "type": "string"
+    },
+    "author": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "instructions": {
+      "type": "string"
+    },
+    "page": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "question": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "questionID": {
+                  "description": "unique identifier allowing an answer in a JSON file to be linked to a particular question (must be used in association with 'surveyID'",
+                  "type": "integer"
+                },
+                "text": {
+                  "type": "string"
+                },
+                "displayMediaIcon": {
+                  "description": "flag indicating whether to display media icon allowing capture of additional survey evidence (photo/sound/video)",
+                  "type": "boolean"
+                },
+                "htmlControl": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "controlID": {
+                        "description": "unique identifier for a particular html control",
+                        "type": "integer"
+                      },
+                      "controlType": {
+                        "type": "string"
+                      },
+                      "placeholder": {
+                        "type": "string"
+                      },
+                      "text": {
+                        "type": "string"
+                      },
+                      "parentControlID": {
+                        "description": "allows html controls to be linked for navigation/validation purposes",
+                        "type": "integer"
+                      }
+                    },
+                    "required": [
+                      "controlID", "controlType"
+                    ]
+                  }
+                }
+              },
+              "required": [
+                "questionID",
+                "text"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "surveyID"
+  ]
+}
