@@ -10,7 +10,7 @@ import com.hendall.surveyrest.util.JsonUtil;
 
 public class QuestionsHelper {
 	private static final Logger log = Logger.getLogger(QuestionsHelper.class.getName());
-	private static final String file ="Hospital_Infection_Control_Worksheet_v0_22a.json";
+	private static final String file ="Hospital_Infection_Control_Worksheet_v0_14a.json";
 	
 
 	public QuestionsHelper() { 	

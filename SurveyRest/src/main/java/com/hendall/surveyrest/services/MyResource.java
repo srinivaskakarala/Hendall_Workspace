@@ -31,7 +31,7 @@ import com.hendall.surveyrest.jpa.JpaUtil;
 @Path("/myresource")
 public class MyResource {
    
-	private static final String path = "Hospital_Infection_Control_Worksheet_v0_14a.json";
+	private static final String path = "Hospital_Infection_Control_Worksheet_v0_22a.json";
 
 	@GET
     @Produces({MediaType.APPLICATION_JSON})

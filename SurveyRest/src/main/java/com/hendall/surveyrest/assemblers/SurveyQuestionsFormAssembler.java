@@ -22,7 +22,7 @@ public class SurveyQuestionsFormAssembler {
 
 	public static void assebleViewObject(ClassName suvey, SectionHelpWrapper sectionHelpWrapper) {
 		populateSections(suvey, sectionHelpWrapper.getSections());
-		//populateHelpSections(suvey, sectionHelpWrapper.getHelp());
+		 populateHelpSections(suvey, sectionHelpWrapper.getHelp());
 
 	}
 
