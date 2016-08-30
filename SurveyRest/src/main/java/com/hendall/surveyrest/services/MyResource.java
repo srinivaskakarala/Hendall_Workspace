@@ -110,6 +110,14 @@ public class MyResource {
 	
 	@GET
     @Produces({MediaType.APPLICATION_JSON})
+	@Path("/users")
+    public List<UserSession>  getUserSurveys(@QueryParam("state") String state){
+		UsersServiceHelper  usersServiceHelper = new UsersServiceHelper();
+		return usersServiceHelper.getUsers(state);
+	}
+	
+	@GET
+    @Produces({MediaType.APPLICATION_JSON})
 	@Path("/status")
     public String  getServiceStatus(){
 		return "available";

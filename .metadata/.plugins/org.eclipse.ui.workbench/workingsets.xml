@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workingSetManager>
-<workingSet editPageId="org.eclipse.ui.resourceWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1470512570669_1" label="" name=""/>
+<workingSet editPageId="org.eclipse.ui.resourceWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1470512570669_1" label="" name="">
+<item TAG_MARKER_ID="1224" TAG_RESOURCE_FACTORY_ID="org.eclipse.ui.internal.model.ResourceFactory" factoryID="org.eclipse.debug.ui.elementFactory.breakpoints" path="/SurveyRest/src/main/java/com/hendall/surveyrest/services/MyResource.java" type="1"/>
+<item TAG_MARKER_ID="1225" TAG_RESOURCE_FACTORY_ID="org.eclipse.ui.internal.model.ResourceFactory" factoryID="org.eclipse.debug.ui.elementFactory.breakpoints" path="/SurveyRest/src/main/java/com/hendall/surveyrest/helpers/UsersServiceHelper.java" type="1"/>
+</workingSet>
 <workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1470512104432_0" label="Window Working Set" name="Aggregate for window 1470512104432"/>
 </workingSetManager>

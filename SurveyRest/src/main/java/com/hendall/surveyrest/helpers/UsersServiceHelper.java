@@ -49,6 +49,35 @@ public class UsersServiceHelper {
 		
 		return null;
 	}
+	
+	public List<UserSession> getUsers(String state) {
+		try {
+			Query query = null;
+			if ("ALL".equals(state)) {
+				query = JpaUtil.getEntityManager()
+						.createQuery(" Select A from Users A", Users.class);
+			} else {
+				query = JpaUtil.getEntityManager()
+						.createQuery(" Select A from Users A where A.state=:state", Users.class);
+				query.setParameter("state", state);
+			}
+			List<Users> usersObjectList = query.getResultList();
+			List<UserSession> usersList = new ArrayList<UserSession>();			
+			if (CollectionUtils.isNotEmpty(usersObjectList)) {				
+				for (Users user:usersObjectList) {
+					UserSession userSessionAssembled = new UserSession();
+					UsersAssembler.assembleUserSession(user, userSessionAssembled);
+					usersList.add(userSessionAssembled);
+				}
+				
+				return usersList;
+			}
+		} finally {
+			JpaUtil.closeEntityManager();
+		}
+		
+		return null;
+	}
 
 	public Map<String, String> getStateUsers(String state) {
 		Map<String, String> stateUsersMap = new HashMap<String, String>();
