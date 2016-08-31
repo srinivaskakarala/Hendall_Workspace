@@ -206,56 +206,68 @@ public class UsersServiceHelper {
 	public String assingToOtherUser(Integer userKey, Integer surveyKey, String supervisorEmail) {
 		if (userKey == null || surveyKey == null || supervisorEmail == null)
 			return "error";
-		Query userQuery = JpaUtil.getEntityManager()
-				.createQuery(" Select u from Users u Where u.email=:supervisorEmail)", Users.class);
-		userQuery.setParameter("supervisorEmail", supervisorEmail);
-		List<Users> usresList = userQuery.getResultList();
-		if (CollectionUtils.isEmpty(usresList)) {
-			return "No user with that email address exists in the sytem";
-		} else {
-			Users superUser = usresList.get(0);
-			Query userAccessQuery = JpaUtil.getEntityManager().createQuery(
-					" Select usa from UserSurveyAccess usa join fetch usa.survey s join fetch usa.users u Where u.userKey=:userKey and s.surveyKey=:surveyKey)",
-					UserSurveyAccess.class);
-			userAccessQuery.setParameter("userKey", userKey);
-			userAccessQuery.setParameter("surveyKey", surveyKey);
-			List<UserSurveyAccess> userSurveyAccessList = userAccessQuery.getResultList();
-			if (CollectionUtils.isEmpty(userSurveyAccessList)) {
-				return "";
+		try {
+			JpaUtil.getEntityManager().getTransaction().begin();
+			Query userQuery = JpaUtil.getEntityManager()
+					.createQuery(" Select u from Users u Where u.email=:supervisorEmail)", Users.class);
+			userQuery.setParameter("supervisorEmail", supervisorEmail);
+			List<Users> usresList = userQuery.getResultList();
+			if (CollectionUtils.isEmpty(usresList)) {
+				return "No user with that email address exists in the sytem";
 			} else {
-				UserSurveyAccess userSurveyAccess = userSurveyAccessList.get(0);
-				userSurveyAccess.setStatus(ServiceConstants.STATUS_IN_SUBMITTED);
-				JpaUtil.getEntityManager().merge(userSurveyAccess);
-
-				Query supervisorAccessQuery = JpaUtil.getEntityManager().createQuery(
-						" Select usa from UserSurveyAccess usa join fetch usa.survey s join fetch usa.users u Where u.email=:supervisorEmail and s.surveyKey=:surveyKey)",
+				Users superUser = usresList.get(0);
+				Query userAccessQuery = JpaUtil.getEntityManager().createQuery(
+						" Select usa from UserSurveyAccess usa join fetch usa.survey s join fetch usa.users u Where u.userKey=:userKey and s.surveyKey=:surveyKey)",
 						UserSurveyAccess.class);
-				supervisorAccessQuery.setParameter("surveyKey", surveyKey);
-				supervisorAccessQuery.setParameter("supervisorEmail", supervisorEmail);
-				List<UserSurveyAccess> supervisorUserSurveyAccessList = supervisorAccessQuery.getResultList();
-				UserSurveyAccess supervisorAccess = null;
-				if (CollectionUtils.isNotEmpty(supervisorUserSurveyAccessList)) {
-					supervisorAccess = supervisorUserSurveyAccessList.get(0);
+				userAccessQuery.setParameter("userKey", userKey);
+				userAccessQuery.setParameter("surveyKey", surveyKey);
+				List<UserSurveyAccess> userSurveyAccessList = userAccessQuery.getResultList();
+				if (CollectionUtils.isEmpty(userSurveyAccessList)) {
+					return "";
 				} else {
-					supervisorAccess = new UserSurveyAccess();
-					;
+					UserSurveyAccess userSurveyAccess = userSurveyAccessList.get(0);
+					userSurveyAccess.setStatus(ServiceConstants.STATUS_IN_SUBMITTED);
+					JpaUtil.getEntityManager().merge(userSurveyAccess);
+
+					Query supervisorAccessQuery = JpaUtil.getEntityManager().createQuery(
+							" Select usa from UserSurveyAccess usa join fetch usa.survey s join fetch usa.users u Where u.email=:supervisorEmail and s.surveyKey=:surveyKey)",
+							UserSurveyAccess.class);
+					supervisorAccessQuery.setParameter("surveyKey", surveyKey);
+					supervisorAccessQuery.setParameter("supervisorEmail", supervisorEmail);
+					List<UserSurveyAccess> supervisorUserSurveyAccessList = supervisorAccessQuery.getResultList();
+					UserSurveyAccess supervisorAccess = null;
+					if (CollectionUtils.isNotEmpty(supervisorUserSurveyAccessList)) {
+						supervisorAccess = supervisorUserSurveyAccessList.get(0);
+					} else {
+						supervisorAccess = new UserSurveyAccess();
+						;
+					}
+
+					Survey survey = new Survey();
+					survey.setSurveyKey(surveyKey);
+					supervisorAccess.setSurvey(survey);
+					supervisorAccess.setUsers(superUser);
+					supervisorAccess.setStatus(ServiceConstants.STATUS_IN_PENDING_REVIEW);
+					JpaUtil.getEntityManager().merge(supervisorAccess);
+					// EmailService emailService = new EmailService();
+					// emailService.sendEmail(ServiceConstants.EMAIL_FROM_ADDRESS,
+					// supervisorEmail,
+					// ServiceConstants.EMAIL_SUBJECT,
+					// ServiceConstants.EMAIL_MESSAGE);
+
 				}
-
-				Survey survey = new Survey();
-				survey.setSurveyKey(surveyKey);
-				supervisorAccess.setSurvey(survey);
-				supervisorAccess.setUsers(superUser);
-				supervisorAccess.setStatus(ServiceConstants.STATUS_IN_PENDING_REVIEW);
-				JpaUtil.getEntityManager().merge(supervisorAccess);
-				// EmailService emailService = new EmailService();
-				// emailService.sendEmail(ServiceConstants.EMAIL_FROM_ADDRESS,
-				// supervisorEmail,
-				// ServiceConstants.EMAIL_SUBJECT,
-				// ServiceConstants.EMAIL_MESSAGE);
-
 			}
+			return "Successful";
+		} catch (Exception e) {
+
+			e.printStackTrace();
+
+			JpaUtil.getEntityManager().getTransaction().rollback();
+		} finally {
+			JpaUtil.closeEntityManager();
 		}
-		return "Successful";
+		return "failed";
 	}
+		
 
 }

@@ -122,5 +122,15 @@ public class MyResource {
     public String  getServiceStatus(){
 		return "available";
 	}
-   
+	
+	@PUT
+    @Produces({MediaType.APPLICATION_JSON})
+	@Consumes({MediaType.APPLICATION_JSON})
+	@Path("/assignsurvey")
+    public String  getUserSurveys(@QueryParam("userKey") int userKey,
+    		@QueryParam("surveyKey") int surveyKey,
+    		@QueryParam("userEmail") String userEmail){
+		UsersServiceHelper  usersServiceHelper = new UsersServiceHelper();
+		return usersServiceHelper.assingToOtherUser(userKey, surveyKey, userEmail);
+	}
 }
