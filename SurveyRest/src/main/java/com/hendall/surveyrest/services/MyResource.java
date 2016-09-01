@@ -1,11 +1,13 @@
 
 package com.hendall.surveyrest.services;
 
+import java.io.InputStream;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
@@ -21,10 +23,13 @@ import com.hendall.surveyrest.dto.ProvidersDTO;
 import com.hendall.surveyrest.dto.StatesDTO;
 import com.hendall.surveyrest.entities.ProvidersLu;
 import com.hendall.surveyrest.entities.StatesLu;
+import com.hendall.surveyrest.helpers.FileHelper;
 import com.hendall.surveyrest.helpers.QuestionAnswerHelper;
 import com.hendall.surveyrest.helpers.QuestionsHelper;
 import com.hendall.surveyrest.helpers.UsersServiceHelper;
 import com.hendall.surveyrest.jpa.JpaUtil;
+import com.sun.jersey.core.header.FormDataContentDisposition;
+import com.sun.jersey.multipart.FormDataParam;
 
 /** Example resource class hosted at the URI path "/myresource"
  */
@@ -102,7 +107,7 @@ public class MyResource {
 	@GET
     @Produces({MediaType.APPLICATION_JSON})
 	@Path("/authentication")
-    public UserSession  getUserSurveys(@QueryParam("userName") String userName,
+    public UserSession  authentication(@QueryParam("userName") String userName,
     		@QueryParam("password") String password){
 		UsersServiceHelper  usersServiceHelper = new UsersServiceHelper();
 		return usersServiceHelper.getUsersSurveys(userName, password);
@@ -111,7 +116,7 @@ public class MyResource {
 	@GET
     @Produces({MediaType.APPLICATION_JSON})
 	@Path("/users")
-    public List<UserSession>  getUserSurveys(@QueryParam("state") String state){
+    public List<UserSession>  getUsers(@QueryParam("state") String state){
 		UsersServiceHelper  usersServiceHelper = new UsersServiceHelper();
 		return usersServiceHelper.getUsers(state);
 	}
@@ -127,10 +132,21 @@ public class MyResource {
     @Produces({MediaType.APPLICATION_JSON})
 	@Consumes({MediaType.APPLICATION_JSON})
 	@Path("/assignsurvey")
-    public String  getUserSurveys(@QueryParam("userKey") int userKey,
+    public String  manageSurvey(@QueryParam("userKey") int userKey,
     		@QueryParam("surveyKey") int surveyKey,
     		@QueryParam("userEmail") String userEmail){
 		UsersServiceHelper  usersServiceHelper = new UsersServiceHelper();
 		return usersServiceHelper.assingToOtherUser(userKey, surveyKey, userEmail);
+	}
+	
+	@PUT
+    @Produces({MediaType.APPLICATION_JSON})
+	@Consumes(MediaType.MULTIPART_FORM_DATA)
+	@Path("/file")
+    public String  uploadFile( @FormDataParam("file") InputStream uploadedInputStream,
+            @FormDataParam("file") FormDataContentDisposition fileDetail,
+            @FormDataParam("path") String path){
+		FileHelper  fileHelper = new FileHelper();
+		return fileHelper.uploadFile(uploadedInputStream, fileDetail, path);
 	}
 }
