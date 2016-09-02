@@ -17,11 +17,15 @@ import com.hendall.surveyrest.datamodel.Options;
 import com.hendall.surveyrest.datamodel.Question;
 import com.hendall.surveyrest.datamodel.Section;
 import com.hendall.surveyrest.datamodel.SectionHelpWrapper;
+import com.hendall.surveyrest.helpers.InfectionControlSpecialCases;
+import com.hendall.surveyrest.jpa.JpaUtil;
 
 public class SurveyQuestionsFormAssembler {
 
 	public static void assebleViewObject(ClassName suvey, SectionHelpWrapper sectionHelpWrapper) {
 		populateSections(suvey, sectionHelpWrapper.getSections());
+		InfectionControlSpecialCases infectionControlSpecialCases = new InfectionControlSpecialCases();
+		infectionControlSpecialCases.addAddtionalQuestions(sectionHelpWrapper.getSections());
 		 populateHelpSections(suvey, sectionHelpWrapper.getHelp());
 
 	}

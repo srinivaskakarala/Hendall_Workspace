@@ -33,6 +33,14 @@ public class InfectionControlSpecialCases {
 						ProvidersLu.class)
 				.getResultList();
 	}
+	
+	
+
+	public InfectionControlSpecialCases() {
+		// TODO Auto-generated constructor stub
+	}
+
+
 
 	public void processSpecialCases(List<Section> surverQuestionsList) {
 		String selectedStateCode = null;
