@@ -111,7 +111,7 @@ public class QuestionAnswerHelper {
 			// Replace with generic class when new surveys are added.
 			InfectionControlSpecialCases infectionControlSpecialCases = new InfectionControlSpecialCases(
 					JpaUtil.getEntityManager());
-			infectionControlSpecialCases.addAddtionalQuestions(sectionHelpWrapper.getSections());
+			//infectionControlSpecialCases.addAddtionalQuestions(sectionHelpWrapper.getSections());
 			if (!CollectionUtils.isNotEmpty(sectionHelpWrapper.getSections()))
 				return sectionHelpWrapper;
 			Query query = JpaUtil.getEntityManager().createQuery(
