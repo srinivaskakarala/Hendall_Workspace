@@ -257,7 +257,7 @@ public class UsersServiceHelper {
 
 				}
 			}
-			return "Successful";
+			return "Success";
 		} catch (Exception e) {
 
 			e.printStackTrace();

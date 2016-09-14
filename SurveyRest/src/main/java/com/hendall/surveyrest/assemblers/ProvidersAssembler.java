@@ -13,6 +13,7 @@ public class ProvidersAssembler {
 		providersDTO.setProviderKey(providersLu.getProviderKey());
 		providersDTO.setCcn(providersLu.getCcn());
 		providersDTO.setFacilityName(providersLu.getFacilityName());
+		providersDTO.setStateCode(providersLu.getStatesLu().getStateCode());
 		return providersDTO;
 	}
 	

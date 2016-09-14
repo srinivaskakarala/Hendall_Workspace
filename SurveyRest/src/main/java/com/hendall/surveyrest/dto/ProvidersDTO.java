@@ -7,6 +7,7 @@ public class ProvidersDTO implements Serializable {
 	private Integer providerKey;
 	private String ccn;
 	private String facilityName;
+	private String stateCode;
 	
 	public Integer getProviderKey() {
 		return providerKey;
@@ -25,6 +26,12 @@ public class ProvidersDTO implements Serializable {
 	}
 	public void setFacilityName(String facilityName) {
 		this.facilityName = facilityName;
+	}
+	public String getStateCode() {
+		return stateCode;
+	}
+	public void setStateCode(String stateCode) {
+		this.stateCode = stateCode;
 	}
 
 }
