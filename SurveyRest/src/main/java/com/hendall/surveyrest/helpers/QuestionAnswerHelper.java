@@ -3,6 +3,7 @@ package com.hendall.surveyrest.helpers;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -19,6 +20,7 @@ import com.hendall.surveyrest.assemblers.ProvidersAssembler;
 import com.hendall.surveyrest.assemblers.StatesAssembler;
 import com.hendall.surveyrest.common.ServiceConstants;
 import com.hendall.surveyrest.datamodel.Answer;
+import com.hendall.surveyrest.datamodel.DifferentUserAnswer;
 import com.hendall.surveyrest.datamodel.Question;
 import com.hendall.surveyrest.datamodel.Section;
 import com.hendall.surveyrest.datamodel.SectionHelpWrapper;
@@ -109,18 +111,18 @@ public class QuestionAnswerHelper {
 		
 		try {
 			// Replace with generic class when new surveys are added.
-			InfectionControlSpecialCases infectionControlSpecialCases = new InfectionControlSpecialCases(
-					JpaUtil.getEntityManager());
+			InfectionControlSpecialCases infectionControlSpecialCases = new InfectionControlSpecialCases();
 			//infectionControlSpecialCases.addAddtionalQuestions(sectionHelpWrapper.getSections());
 			if (!CollectionUtils.isNotEmpty(sectionHelpWrapper.getSections()))
 				return sectionHelpWrapper;
 			Query query = JpaUtil.getEntityManager().createQuery(
-					"Select a from Answers a join fetch a.userSurveyAccess usa join fetch usa.survey s where s.surveyKey=:surveyKey",
+					"Select a from Answers a join fetch a.userSurveyAccess usa join fetch usa.users us join fetch usa.survey s where s.surveyKey=:surveyKey",
 					Answers.class);
 			query.setParameter("surveyKey", surveyKey);
 			List<Answers> answersList = query.getResultList();
 			Map<Integer, Answers> answersEntityMap = new HashMap<Integer, Answers>();
-			populateAnswersEntiyMap(answersEntityMap, answersList);
+			Map<Integer, Map<Integer, Answers>> otherUsersAnswersEntityMap = new HashMap<Integer, Map<Integer, Answers>>();
+			populateAnswersEntiyMap(answersEntityMap, answersList, otherUsersAnswersEntityMap, userKey);
 			String approverEmail = null;
 			for (Section section : sectionHelpWrapper.getSections()) {
 				section.setSurveyKey(surveyKey);
@@ -130,14 +132,24 @@ public class QuestionAnswerHelper {
 				}
 				for (Question question : section.getSurveyQuestionAnswerList()) {
 					for (Answer answer : question.getAnswersList()) {
-
 						List<Answers> tmpList = new ArrayList<Answers>();
 						populateChildEntitiesList(answer, tmpList, answersEntityMap);
 						AnswersAssembler.assembleVo(answer, answersEntityMap.get(answer.getHtmlControlId()),
-								answersEntityMap.get(answer.getParentId()), tmpList);
-
+								answersEntityMap.get(answer.getParentId()), tmpList);				
+						List<DifferentUserAnswer> differentUserAnswerList = new ArrayList<DifferentUserAnswer>();
+						answer.setDifferentUserAnswerList(differentUserAnswerList);
+						for (Map.Entry<Integer, Map<Integer, Answers>> entry : otherUsersAnswersEntityMap.entrySet()) {
+						    Integer otherUserKey = entry.getKey();
+						    Map<Integer, Answers> otherUserAnswerMap = entry.getValue();
+						    if (otherUserAnswerMap.get(answer.getHtmlControlId()) != null) {
+						    	DifferentUserAnswer differentUserAnswer = new DifferentUserAnswer();
+							    differentUserAnswer.setUser(otherUserKey);						    
+							    differentUserAnswer.setAnswer(otherUserAnswerMap.get(answer.getHtmlControlId()).getAnswer());
+							    differentUserAnswerList.add(differentUserAnswer);
+						    }
+						    
+						}
 					}
-
 					question.populateObservationNumbers();
 				}
 			}
@@ -185,11 +197,21 @@ public class QuestionAnswerHelper {
 
 	}
 
-	private void populateAnswersEntiyMap(Map<Integer, Answers> answersEntityMap, List<Answers> answersList) {
-		if (!CollectionUtils.isNotEmpty(answersList))
+	private void populateAnswersEntiyMap(Map<Integer, Answers> answersEntityMap, List<Answers> answersList, Map<Integer, Map<Integer, Answers>> otherUsersAnswersEntityMap, Integer userKey) {
+		if (!CollectionUtils.isNotEmpty(answersList) || userKey == null)
 			return;
 		for (Answers answer : answersList) {
-			answersEntityMap.put(answer.getId().getHtmlControlId(), answer);
+			Integer ansUserKey = answer.getUserSurveyAccess().getUsers().getUserKey();
+			if (ansUserKey.equals(userKey)) {
+				answersEntityMap.put(answer.getId().getHtmlControlId(), answer);
+			} else if(otherUsersAnswersEntityMap.containsKey(ansUserKey)) {
+				Map<Integer, Answers> otherUserMap = otherUsersAnswersEntityMap.get(ansUserKey);
+				otherUserMap.put(answer.getId().getHtmlControlId(), answer);
+			} else {
+				Map<Integer, Answers> otherUserNewMap = new HashMap<Integer, Answers>();
+				otherUserNewMap.put(answer.getId().getHtmlControlId(), answer);
+				otherUsersAnswersEntityMap.put(ansUserKey, otherUserNewMap);
+			}
 		}
 	}
 

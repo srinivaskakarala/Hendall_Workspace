@@ -33,6 +33,7 @@ public class Answer implements Serializable {
 	private String mesageType;
 	private String errorStyle;
 	private String dateString;
+	private List<DifferentUserAnswer> differentUserAnswerList;
 	public String getHtmlControlType() {
 		return htmlControlType;
 	}
@@ -218,6 +219,11 @@ public class Answer implements Serializable {
 	public void setDateString(String dateString){
 		this.dateString=dateString;
 	}
-		
+	public List<DifferentUserAnswer> getDifferentUserAnswerList() {
+		return differentUserAnswerList;
+	}
+	public void setDifferentUserAnswerList(List<DifferentUserAnswer> differentUserAnswerList) {
+		this.differentUserAnswerList = differentUserAnswerList;
+	}	
 	
 }

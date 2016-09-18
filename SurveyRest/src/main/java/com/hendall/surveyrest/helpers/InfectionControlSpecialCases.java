@@ -46,54 +46,54 @@ public class InfectionControlSpecialCases {
 		String selectedStateCode = null;
 		Map<Integer, Boolean> valuesMap = new HashMap<Integer, Boolean>();
 
-		for (Section section : surverQuestionsList) {
-			for (Question question : section.getSurveyQuestionAnswerList()) {
-				for (Answer answer : question.getAnswersList()) {
-					if (ServiceConstants.INFECTION_CONTROL_SKIP_LOGIC_QUESTIONS.contains(question.getQuestionId())) {
-						valuesMap.put(question.getQuestionId(), CollectionUtils.isNotEmpty(answer.getAnswersList()));
-					}
-
-					if (answer.getHtmlControlType().equals(ServiceConstants.HTML_CONTROL_RADIO)) {
-						if ((answer != null && answer.getAnswer() != null)
-								&& (answer.getAnswer().equals(ServiceConstants.UNABLE_TO_OBSERVE)
-										|| answer.getAnswer().equals(ServiceConstants.NA)))
-							question.setDisableAddObservation(true);
-					}
-
-					if (answer.getHtmlControlId() == ServiceConstants.INFECTION_CONTROL_STATE_CONTROL_ID) {
-						List<StatesLu> satesList = entityManager
-								.createQuery("Select A from StatesLu A order by A.stateName ", StatesLu.class)
-								.getResultList();
-						answer.getHtmlOptions().clear();
-						Options selectState = new Options();
-						selectState.setKey("");
-						selectState.setValue("Select a state");
-						answer.getHtmlOptions().add(selectState);
-
-						for (StatesLu statesLu : satesList) {
-							Options option = new Options();
-							option.setKey(statesLu.getStateCode());
-							option.setValue(statesLu.getStateName());
-							answer.getHtmlOptions().add(option);
-						}
-						selectedStateCode = answer.getAnswer();
-					}
-					if (answer.getHtmlControlId() == ServiceConstants.INFECTION_CONTROL_HOSPITAL_NAME_CONTROL_ID) {
-						answer.getHtmlOptions().clear();
-						Options selectProvider = new Options();
-						selectProvider.setKey("");
-						selectProvider.setValue("Select a Hospital");
-						answer.getHtmlOptions().add(selectProvider);
-						Map<String, List<Options>> dependentHtmlOptionsMap = new HashMap<String, List<Options>>();
-
-						if (selectedStateCode != null) {
-							answer.setHtmlOptions(dependentHtmlOptionsMap.get(selectedStateCode));
-						}
-					}
-
-				}
-			}
-		}
+//		for (Section section : surverQuestionsList) {
+//			for (Question question : section.getSurveyQuestionAnswerList()) {
+//				for (Answer answer : question.getAnswersList()) {
+//					if (ServiceConstants.INFECTION_CONTROL_SKIP_LOGIC_QUESTIONS.contains(question.getQuestionId())) {
+//						valuesMap.put(question.getQuestionId(), CollectionUtils.isNotEmpty(answer.getAnswersList()));
+//					}
+//
+//					if (answer.getHtmlControlType().equals(ServiceConstants.HTML_CONTROL_RADIO)) {
+//						if ((answer != null && answer.getAnswer() != null)
+//								&& (answer.getAnswer().equals(ServiceConstants.UNABLE_TO_OBSERVE)
+//										|| answer.getAnswer().equals(ServiceConstants.NA)))
+//							question.setDisableAddObservation(true);
+//					}
+//
+//					if (answer.getHtmlControlId() == ServiceConstants.INFECTION_CONTROL_STATE_CONTROL_ID) {
+//						List<StatesLu> satesList = entityManager
+//								.createQuery("Select A from StatesLu A order by A.stateName ", StatesLu.class)
+//								.getResultList();
+//						answer.getHtmlOptions().clear();
+//						Options selectState = new Options();
+//						selectState.setKey("");
+//						selectState.setValue("Select a state");
+//						answer.getHtmlOptions().add(selectState);
+//
+//						for (StatesLu statesLu : satesList) {
+//							Options option = new Options();
+//							option.setKey(statesLu.getStateCode());
+//							option.setValue(statesLu.getStateName());
+//							answer.getHtmlOptions().add(option);
+//						}
+//						selectedStateCode = answer.getAnswer();
+//					}
+//					if (answer.getHtmlControlId() == ServiceConstants.INFECTION_CONTROL_HOSPITAL_NAME_CONTROL_ID) {
+//						answer.getHtmlOptions().clear();
+//						Options selectProvider = new Options();
+//						selectProvider.setKey("");
+//						selectProvider.setValue("Select a Hospital");
+//						answer.getHtmlOptions().add(selectProvider);
+//						Map<String, List<Options>> dependentHtmlOptionsMap = new HashMap<String, List<Options>>();
+//
+//						if (selectedStateCode != null) {
+//							answer.setHtmlOptions(dependentHtmlOptionsMap.get(selectedStateCode));
+//						}
+//					}
+//
+//				}
+//			}
+//		}
 		for (Integer id : ServiceConstants.INFECTION_CONTROL_SKIP_LOGIC_QUESTIONS) {
 			renderNoSecondObesrvations(surverQuestionsList, valuesMap.get(id), id);
 			System.out.println(surverQuestionsList.size());

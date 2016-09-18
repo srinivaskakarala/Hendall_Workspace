@@ -30,7 +30,7 @@ public class Question implements Serializable {
 	private boolean hasErrors=false;
 	private List<File> fileNames;
 	private int obsevationNumber;
-	private List<DifferentUserAnswer> differentUserAnswerList;
+	
 
 	public void populateObservationNumbers() {
 		//RederReove button is should be set for both radio and text area.
@@ -197,12 +197,5 @@ public class Question implements Serializable {
 	public void setFileNames(List<File> fileNames) {
 		this.fileNames = fileNames;
 	}
-	public List<DifferentUserAnswer> getDifferentUserAnswerList() {
-		return differentUserAnswerList;
-	}
-	public void setDifferentUserAnswerList(List<DifferentUserAnswer> differentUserAnswerList) {
-		this.differentUserAnswerList = differentUserAnswerList;
-	}
-	
 	
 }
