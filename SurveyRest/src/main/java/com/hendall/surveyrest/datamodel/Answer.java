@@ -220,6 +220,8 @@ public class Answer implements Serializable {
 		this.dateString=dateString;
 	}
 	public List<DifferentUserAnswer> getDifferentUserAnswerList() {
+		if (differentUserAnswerList == null)
+			differentUserAnswerList = new ArrayList<DifferentUserAnswer>();
 		return differentUserAnswerList;
 	}
 	public void setDifferentUserAnswerList(List<DifferentUserAnswer> differentUserAnswerList) {
