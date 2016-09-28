@@ -268,6 +268,34 @@ public class UsersServiceHelper {
 		}
 		return "failed";
 	}
+
+	public List<Integer> getUsersForSurvey(Integer surveyKey) {
+		List<Integer> users = new ArrayList<Integer>();
+		if (surveyKey == null)
+			return users;
+		try {
+			JpaUtil.getEntityManager().getTransaction().begin();
+			Query query = JpaUtil.getEntityManager().createQuery(
+					"Select usa from UserSurveyAccess usa join fetch usa.survey s join fetch usa.users u where s.surveyKey=:surveyKey and usa.status=:status",
+					UserSurveyAccess.class);
+			query.setParameter("surveyKey", surveyKey);
+			query.setParameter("status", ServiceConstants.STATUS_IN_PROGRESS);
+			List<UserSurveyAccess> resultList = query.getResultList();
+			for (UserSurveyAccess userSurveyAccess:resultList){
+				users.add(userSurveyAccess.getUsers().getUserKey());
+			}
+				
+			
+			} catch (Exception e) {
+	
+				e.printStackTrace();
+	
+				JpaUtil.getEntityManager().getTransaction().rollback();
+			} finally {
+				JpaUtil.closeEntityManager();
+			}
+		return users;
+	}
 		
 
 }

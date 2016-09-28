@@ -149,4 +149,12 @@ public class MyResource {
 		FileHelper  fileHelper = new FileHelper();
 		return fileHelper.uploadFile(uploadedInputStream, fileDetail, path);
 	}
+	
+	@GET
+    @Produces({MediaType.APPLICATION_JSON})
+	@Path("/surveyUsers")
+    public List<Integer>  getUsersForSurvey(@QueryParam("surveyKey") Integer surveyKey){
+		UsersServiceHelper  usersServiceHelper = new UsersServiceHelper();
+		return usersServiceHelper.getUsersForSurvey(surveyKey);
+	}
 }
