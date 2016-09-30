@@ -201,16 +201,18 @@ public class QuestionAnswerHelper {
 		if (!CollectionUtils.isNotEmpty(answersList) || userKey == null)
 			return;
 		for (Answers answer : answersList) {
-			Integer ansUserKey = answer.getUserSurveyAccess().getUsers().getUserKey();
-			if (ansUserKey.equals(userKey)) {
-				answersEntityMap.put(answer.getId().getHtmlControlId(), answer);
-			} else if(otherUsersAnswersEntityMap.containsKey(ansUserKey)) {
-				Map<Integer, Answers> otherUserMap = otherUsersAnswersEntityMap.get(ansUserKey);
-				otherUserMap.put(answer.getId().getHtmlControlId(), answer);
-			} else {
-				Map<Integer, Answers> otherUserNewMap = new HashMap<Integer, Answers>();
-				otherUserNewMap.put(answer.getId().getHtmlControlId(), answer);
-				otherUsersAnswersEntityMap.put(ansUserKey, otherUserNewMap);
+			if (answer != null && answer.getUserSurveyAccess() != null && answer.getUserSurveyAccess().getUsers() != null && answer.getUserSurveyAccess().getUsers().getUserKey() != null ) {
+				Integer ansUserKey = answer.getUserSurveyAccess().getUsers().getUserKey();
+				if (ansUserKey.equals(userKey)) {
+					answersEntityMap.put(answer.getId().getHtmlControlId(), answer);
+				} else if(otherUsersAnswersEntityMap.containsKey(ansUserKey)) {
+					Map<Integer, Answers> otherUserMap = otherUsersAnswersEntityMap.get(ansUserKey);
+					otherUserMap.put(answer.getId().getHtmlControlId(), answer);
+				} else {
+					Map<Integer, Answers> otherUserNewMap = new HashMap<Integer, Answers>();
+					otherUserNewMap.put(answer.getId().getHtmlControlId(), answer);
+					otherUsersAnswersEntityMap.put(ansUserKey, otherUserNewMap);
+				}
 			}
 		}
 	}
