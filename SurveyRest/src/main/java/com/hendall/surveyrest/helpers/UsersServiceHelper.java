@@ -296,6 +296,26 @@ public class UsersServiceHelper {
 			}
 		return users;
 	}
+
+	public List<Integer> addUserstoSurvey(Integer surveyKey, List<Integer> users) {
+		List<Integer> userkeys = new ArrayList<Integer>();
+		if (surveyKey == null || users == null || users.isEmpty())
+			return userkeys;
+		for (Integer userKey:users) {
+			try {
+				JpaUtil.getEntityManager().getTransaction().begin();
+				
+			} catch (Exception e) {
+				
+				e.printStackTrace();
+	
+				JpaUtil.getEntityManager().getTransaction().rollback();
+			} finally {
+				JpaUtil.closeEntityManager();
+			}
+		}
+		return getUsersForSurvey(surveyKey);
+	}
 		
 
 }

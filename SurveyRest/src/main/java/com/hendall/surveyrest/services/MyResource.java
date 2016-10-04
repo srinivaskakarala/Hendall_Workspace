@@ -157,4 +157,14 @@ public class MyResource {
 		UsersServiceHelper  usersServiceHelper = new UsersServiceHelper();
 		return usersServiceHelper.getUsersForSurvey(surveyKey);
 	}
+	
+	@PUT
+    @Produces({MediaType.APPLICATION_JSON})
+	@Consumes({MediaType.APPLICATION_JSON})
+	@Path("/surveyUsers")
+    public List<Integer>  addUserstoSurvey(@QueryParam("surveyKey") Integer surveyKey,
+    		@QueryParam("users") List<Integer> users){
+		UsersServiceHelper  usersServiceHelper = new UsersServiceHelper();
+		return usersServiceHelper.addUserstoSurvey(surveyKey, users);
+	}
 }
