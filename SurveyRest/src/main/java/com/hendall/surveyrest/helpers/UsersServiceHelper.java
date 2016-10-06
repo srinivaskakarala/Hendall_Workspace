@@ -283,9 +283,7 @@ public class UsersServiceHelper {
 			List<UserSurveyAccess> resultList = query.getResultList();
 			for (UserSurveyAccess userSurveyAccess:resultList){
 				users.add(userSurveyAccess.getUsers().getUserKey());
-			}
-				
-			
+				}			
 			} catch (Exception e) {
 	
 				e.printStackTrace();
@@ -301,18 +299,48 @@ public class UsersServiceHelper {
 		List<Integer> userkeys = new ArrayList<Integer>();
 		if (surveyKey == null || users == null || users.isEmpty())
 			return userkeys;
-		for (Integer userKey:users) {
-			try {
-				JpaUtil.getEntityManager().getTransaction().begin();
+		try {
+			JpaUtil.getEntityManager().getTransaction().begin();
+			
+			for (Integer userKey:users) {
 				
-			} catch (Exception e) {
-				
-				e.printStackTrace();
-	
-				JpaUtil.getEntityManager().getTransaction().rollback();
-			} finally {
-				JpaUtil.closeEntityManager();
-			}
+				Query userQuery = JpaUtil.getEntityManager()
+						.createQuery(" Select u from Users u Where u.userKey=:userKey)", Users.class);
+				userQuery.setParameter("userKey", userKey);
+				List<Users> usresList = userQuery.getResultList();
+				if (!CollectionUtils.isEmpty(usresList)) {
+					Users superUser = usresList.get(0);
+					Query surveyQuery = JpaUtil.getEntityManager().createQuery(
+							" Select s from survey s Where s.surveyKey=:surveyKey)",
+							Survey.class);
+					surveyQuery.setParameter("surveyKey", surveyKey);					
+					List<Survey> surveyList = surveyQuery.getResultList();
+					Survey survey = new Survey();
+						if (!CollectionUtils.isEmpty(usresList)) {
+							survey = surveyList.get(0);
+						
+						UserSurveyAccess supervisorAccess = new UserSurveyAccess();
+						survey.setSurveyKey(surveyKey);
+						supervisorAccess.setSurvey(survey);
+						supervisorAccess.setUsers(superUser);
+						supervisorAccess.setStatus(ServiceConstants.STATUS_IN_PROGRESS);
+						JpaUtil.getEntityManager().merge(supervisorAccess);
+						// EmailService emailService = new EmailService();
+						// emailService.sendEmail(ServiceConstants.EMAIL_FROM_ADDRESS,
+						// supervisorEmail,
+						// ServiceConstants.EMAIL_SUBJECT,
+						// ServiceConstants.EMAIL_MESSAGE);
+						}
+					}
+				}
+			
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+
+			JpaUtil.getEntityManager().getTransaction().rollback();
+		} finally {
+			JpaUtil.closeEntityManager();
 		}
 		return getUsersForSurvey(surveyKey);
 	}
