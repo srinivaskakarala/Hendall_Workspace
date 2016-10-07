@@ -294,7 +294,8 @@ public class UsersServiceHelper {
 				JpaUtil.getEntityManager().getTransaction().rollback();
 			} finally {
 				JpaUtil.closeEntityManager();
-			}		
+			}	
+		surveyersModel.setSurveyKey(surveyKey);
 		return surveyersModel;
 	}
 
@@ -314,7 +315,7 @@ public class UsersServiceHelper {
 				if (!CollectionUtils.isEmpty(usresList)) {
 					Users superUser = usresList.get(0);
 					Query surveyQuery = JpaUtil.getEntityManager().createQuery(
-							" Select s from survey s Where s.surveyKey=:surveyKey)",
+							" Select s from Survey s Where s.surveyKey=:surveyKey)",
 							Survey.class);
 					surveyQuery.setParameter("surveyKey", surveyersModel.getSurveyKey());					
 					List<Survey> surveyList = surveyQuery.getResultList();
