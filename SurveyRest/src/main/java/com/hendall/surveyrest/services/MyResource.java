@@ -17,6 +17,7 @@ import javax.ws.rs.core.MediaType;
 
 import com.hendall.surveyrest.datamodel.Section;
 import com.hendall.surveyrest.datamodel.SectionHelpWrapper;
+import com.hendall.surveyrest.datamodel.SurveyersModel;
 import com.hendall.surveyrest.datamodel.UserSession;
 import com.hendall.surveyrest.datamodel.ViewMySurveys;
 import com.hendall.surveyrest.dto.ProvidersDTO;
@@ -153,7 +154,7 @@ public class MyResource {
 	@GET
     @Produces({MediaType.APPLICATION_JSON})
 	@Path("/surveyUsers")
-    public List<Integer>  getUsersForSurvey(@QueryParam("surveyKey") Integer surveyKey){
+    public SurveyersModel  getUsersForSurvey(@QueryParam("surveyKey") Integer surveyKey){
 		UsersServiceHelper  usersServiceHelper = new UsersServiceHelper();
 		return usersServiceHelper.getUsersForSurvey(surveyKey);
 	}
@@ -162,9 +163,8 @@ public class MyResource {
     @Produces({MediaType.APPLICATION_JSON})
 	@Consumes({MediaType.APPLICATION_JSON})
 	@Path("/surveyUsers")
-    public List<Integer>  addUserstoSurvey(@QueryParam("surveyKey") Integer surveyKey,
-    		@QueryParam("users") List<Integer> users){
+    public SurveyersModel  addUserstoSurvey(SurveyersModel surveyersModel){
 		UsersServiceHelper  usersServiceHelper = new UsersServiceHelper();
-		return usersServiceHelper.addUserstoSurvey(surveyKey, users);
+		return usersServiceHelper.addUserstoSurvey(surveyersModel);
 	}
 }

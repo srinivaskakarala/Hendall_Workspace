@@ -13,6 +13,7 @@ import org.apache.commons.collections4.CollectionUtils;
 import com.hendall.surveyrest.assemblers.UsersAssembler;
 import com.hendall.surveyrest.assemblers.ViewMySurveysAssembler;
 import com.hendall.surveyrest.common.ServiceConstants;
+import com.hendall.surveyrest.datamodel.SurveyersModel;
 import com.hendall.surveyrest.datamodel.UserSession;
 import com.hendall.surveyrest.datamodel.ViewMySurveys;
 import com.hendall.surveyrest.entities.Answers;
@@ -269,10 +270,12 @@ public class UsersServiceHelper {
 		return "failed";
 	}
 
-	public List<Integer> getUsersForSurvey(Integer surveyKey) {
+	public SurveyersModel getUsersForSurvey(Integer surveyKey) {
+		SurveyersModel surveyersModel = new SurveyersModel();
 		List<Integer> users = new ArrayList<Integer>();
+		surveyersModel.setUserKeys(users);
 		if (surveyKey == null)
-			return users;
+			return surveyersModel;
 		try {
 			JpaUtil.getEntityManager().getTransaction().begin();
 			Query query = JpaUtil.getEntityManager().createQuery(
@@ -291,18 +294,18 @@ public class UsersServiceHelper {
 				JpaUtil.getEntityManager().getTransaction().rollback();
 			} finally {
 				JpaUtil.closeEntityManager();
-			}
-		return users;
+			}		
+		return surveyersModel;
 	}
 
-	public List<Integer> addUserstoSurvey(Integer surveyKey, List<Integer> users) {
+	public SurveyersModel addUserstoSurvey(SurveyersModel surveyersModel) {
 		List<Integer> userkeys = new ArrayList<Integer>();
-		if (surveyKey == null || users == null || users.isEmpty())
-			return userkeys;
+		if (surveyersModel.getSurveyKey() == null || surveyersModel.getUserKeys() == null || surveyersModel.getUserKeys().isEmpty())
+			return surveyersModel;
 		try {
 			JpaUtil.getEntityManager().getTransaction().begin();
 			
-			for (Integer userKey:users) {
+			for (Integer userKey:surveyersModel.getUserKeys()) {
 				
 				Query userQuery = JpaUtil.getEntityManager()
 						.createQuery(" Select u from Users u Where u.userKey=:userKey)", Users.class);
@@ -313,14 +316,14 @@ public class UsersServiceHelper {
 					Query surveyQuery = JpaUtil.getEntityManager().createQuery(
 							" Select s from survey s Where s.surveyKey=:surveyKey)",
 							Survey.class);
-					surveyQuery.setParameter("surveyKey", surveyKey);					
+					surveyQuery.setParameter("surveyKey", surveyersModel.getSurveyKey());					
 					List<Survey> surveyList = surveyQuery.getResultList();
 					Survey survey = new Survey();
 						if (!CollectionUtils.isEmpty(usresList)) {
 							survey = surveyList.get(0);
 						
 						UserSurveyAccess supervisorAccess = new UserSurveyAccess();
-						survey.setSurveyKey(surveyKey);
+						survey.setSurveyKey(surveyersModel.getSurveyKey());
 						supervisorAccess.setSurvey(survey);
 						supervisorAccess.setUsers(superUser);
 						supervisorAccess.setStatus(ServiceConstants.STATUS_IN_PROGRESS);
@@ -342,7 +345,7 @@ public class UsersServiceHelper {
 		} finally {
 			JpaUtil.closeEntityManager();
 		}
-		return getUsersForSurvey(surveyKey);
+		return getUsersForSurvey(surveyersModel.getSurveyKey());
 	}
 		
 
