@@ -1,7 +1,9 @@
 package com.hendall.surveyrest.datamodel;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import com.hendall.surveyrest.util.ServiceUtils;
 
@@ -20,6 +22,7 @@ public class ViewMySurveys implements Serializable {
 	private String supervisorComments;
 	private boolean isActive = true;
 	private Date startDate;
+	private List<Integer> otherSurveyerKeys;
 
 
 	public String getSurveyKey() {
@@ -123,6 +126,16 @@ public class ViewMySurveys implements Serializable {
 		}
 		return "";
 
+	}
+
+	public List<Integer> getOtherSurveyerKeys() {
+		if (otherSurveyerKeys == null)
+			otherSurveyerKeys = new ArrayList<Integer>();
+		return otherSurveyerKeys;
+	}
+
+	public void setOtherSurveyerKeys(List<Integer> otherSurveyerKeys) {
+		this.otherSurveyerKeys = otherSurveyerKeys;
 	}
 
 

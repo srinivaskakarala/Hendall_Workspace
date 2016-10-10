@@ -151,6 +151,23 @@ public class UsersServiceHelper {
 			for (UserSurveyAccess answers : userSurveyAccessList) {
 				ViewMySurveys viewMySurveys = new ViewMySurveys();
 				ViewMySurveysAssembler.assembleViewMyServeyVo(viewMySurveys, answers, providersMap, surveyProviderMap);
+				if (answers != null && answers.getSurvey()!= null && answers.getSurvey().getSurveyKey() != null) {
+					List<Integer> users = new ArrayList<Integer>();
+					Query otherUsersQuery = JpaUtil.getEntityManager().createQuery(
+							"Select usa from UserSurveyAccess usa join fetch usa.survey s join fetch usa.users u where s.surveyKey=:surveyKey and usa.status=:status",
+							UserSurveyAccess.class);
+					otherUsersQuery.setParameter("surveyKey", answers.getSurvey().getSurveyKey());
+					otherUsersQuery.setParameter("status", ServiceConstants.STATUS_IN_PROGRESS);
+					List<UserSurveyAccess> otherUserSurveyAccessList = otherUsersQuery.getResultList();
+						if (otherUserSurveyAccessList!= null && !otherUserSurveyAccessList.isEmpty()){
+							for (UserSurveyAccess userSurveyAccess:otherUserSurveyAccessList){
+								users.add(userSurveyAccess.getUsers().getUserKey());
+								}
+						}
+					if (users != null && !users.isEmpty()) {
+						viewMySurveys.setOtherSurveyerKeys(users);
+					}
+				}								
 				viewMySurveyList.add(viewMySurveys);
 			}
 		} finally {
@@ -284,9 +301,11 @@ public class UsersServiceHelper {
 			query.setParameter("surveyKey", surveyKey);
 			query.setParameter("status", ServiceConstants.STATUS_IN_PROGRESS);
 			List<UserSurveyAccess> resultList = query.getResultList();
-			for (UserSurveyAccess userSurveyAccess:resultList){
-				users.add(userSurveyAccess.getUsers().getUserKey());
-				}			
+				if (resultList!= null && !resultList.isEmpty()){
+					for (UserSurveyAccess userSurveyAccess:resultList){
+						users.add(userSurveyAccess.getUsers().getUserKey());
+						}
+				}						
 			} catch (Exception e) {
 	
 				e.printStackTrace();
