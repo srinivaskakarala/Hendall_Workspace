@@ -218,15 +218,15 @@ public class QuestionAnswerHelper {
 	}
 
 	public SectionHelpWrapper saveAnswers(List<Section> surverQuestionsList) {
+		
+		if (!CollectionUtils.isNotEmpty(surverQuestionsList))
+			return null;
+
+		Integer userKey = surverQuestionsList.get(0).getUserKey();
+		Integer surveyKey = surverQuestionsList.get(0).getSurveyKey();
+		Integer userSurveyKey = surverQuestionsList.get(0).getUserSurveyAccessKey();
+		
 		try {
-
-			if (!CollectionUtils.isNotEmpty(surverQuestionsList))
-				return null;
-
-			Integer userKey = surverQuestionsList.get(0).getUserKey();
-			Integer surveyKey = surverQuestionsList.get(0).getSurveyKey();
-			Integer userSurveyKey = surverQuestionsList.get(0).getUserSurveyAccessKey();
-
 			JpaUtil.getEntityManager().getTransaction().begin();
 
 			if (surveyKey == -1) { // New Survey
@@ -307,8 +307,7 @@ public class QuestionAnswerHelper {
 
 				}
 			}
-			JpaUtil.getEntityManager().getTransaction().commit();
-			return getQuestionAnswers(userKey, surveyKey);
+			JpaUtil.getEntityManager().getTransaction().commit();			
 		} catch (Exception e) {
 
 			e.printStackTrace();
@@ -318,7 +317,7 @@ public class QuestionAnswerHelper {
 			JpaUtil.closeEntityManager();
 		}
 	
-		return null;
+		return getQuestionAnswers(userKey, surveyKey);
 	}
 
 }
