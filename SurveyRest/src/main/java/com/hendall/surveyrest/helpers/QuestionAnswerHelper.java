@@ -122,14 +122,22 @@ public class QuestionAnswerHelper {
 			List<Answers> answersList = query.getResultList();
 			Map<Integer, Answers> answersEntityMap = new HashMap<Integer, Answers>();
 			Map<Integer, Map<Integer, Answers>> otherUsersAnswersEntityMap = new HashMap<Integer, Map<Integer, Answers>>();
+			Query UserSurveyAccessQuery = JpaUtil.getEntityManager().createQuery(
+					"Select Usa from UserSurveyAccess Usa join fetch Usa.survey s join fetch Usa.users u where s.surveyKey=:surveyKey and u.userKey=:userKey",
+					UserSurveyAccess.class);			
+			UserSurveyAccessQuery.setParameter("surveyKey", surveyKey);
+			UserSurveyAccessQuery.setParameter("userKey", userKey);
+			List<UserSurveyAccess> userSurveyAccessList = UserSurveyAccessQuery.getResultList();
+			Integer userSurveyAccessKey = null;
+			if (CollectionUtils.isNotEmpty(userSurveyAccessList)) {
+				userSurveyAccessKey = userSurveyAccessList.get(0).getUserSurveyKey();
+			}
 			populateAnswersEntiyMap(answersEntityMap, answersList, otherUsersAnswersEntityMap, userKey);
 			String approverEmail = null;
 			for (Section section : sectionHelpWrapper.getSections()) {
 				section.setSurveyKey(surveyKey);
 				section.setUserKey(userKey);
-				if (CollectionUtils.isNotEmpty(answersList)) {
-					section.setUserSurveyAccessKey(answersList.get(0).getId().getUserSurverAccessAnswersKey());
-				}
+				section.setUserSurveyAccessKey(userSurveyAccessKey);
 				for (Question question : section.getSurveyQuestionAnswerList()) {
 					for (Answer answer : question.getAnswersList()) {
 						List<Answers> tmpList = new ArrayList<Answers>();
@@ -229,13 +237,14 @@ public class QuestionAnswerHelper {
 		try {
 			JpaUtil.getEntityManager().getTransaction().begin();
 
-			if (surveyKey == -1) { // New Survey
+			if (surveyKey < 0) { // New Survey
 
 				SurveyTypeLu surveyTypeLu = new SurveyTypeLu();
 				surveyTypeLu.setSurveyTypeKey(1);
 				Survey survey = new Survey();
 				survey.setSurveyTypeLu(surveyTypeLu);
 				survey.setStartDate(new Date());
+				survey.setCreateUser(userKey);
 			   JpaUtil.getEntityManager().persist(survey);
 				
 				
@@ -251,8 +260,9 @@ public class QuestionAnswerHelper {
 				userSurveyKey = userSurveyAccess.getUserSurveyKey();
 			} else {
 				Query query = JpaUtil.getEntityManager().createQuery(
-						"Select U From UserSurveyAccess U inner join fetch U.survey s where s.surveyKey=:surveKey");
+						"Select U From UserSurveyAccess U inner join fetch U.survey s where s.surveyKey=:surveKey and U.userSurveyKey=:userSurveyAccessKey");
 				query.setParameter("surveKey", surveyKey);
+				query.setParameter("userSurveyAccessKey", userSurveyKey);
 				List<UserSurveyAccess> list = (List<UserSurveyAccess>) query.getResultList();
 				UserSurveyAccess userSurveyAccess = list.get(0);
 				userSurveyAccess.setStatus(ServiceConstants.STATUS_IN_PROGRESS);
