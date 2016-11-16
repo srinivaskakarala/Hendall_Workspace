@@ -205,19 +205,30 @@ public class UsersServiceHelper {
 
 	}
 
-	public void approveOrRejectSurvey(Integer surveyKey, String status) {
-		if (surveyKey == null)
-			return;
-		Query query = JpaUtil.getEntityManager().createQuery(
-				"Select u from UserSurveyAccess u join fetch u.survey s where s.surveyKey=:surveyKey",
-				UserSurveyAccess.class);
-		query.setParameter("surveyKey", surveyKey);
-		List<UserSurveyAccess> resultList = query.getResultList();
-		for (UserSurveyAccess userSurveyAccess : resultList) {
-			userSurveyAccess.setStatus(status);
-			JpaUtil.getEntityManager().merge(userSurveyAccess);
-		}
+	public String approveOrRejectSurvey(Integer surveyKey, String status) {
+		if (surveyKey == null || status == null)
+			return "surveykey or status missing";
+		try {
+			JpaUtil.getEntityManager().getTransaction().begin();
+			Query query = JpaUtil.getEntityManager().createQuery(
+					"Select u from UserSurveyAccess u join fetch u.survey s where s.surveyKey=:surveyKey",
+					UserSurveyAccess.class);
+			query.setParameter("surveyKey", surveyKey);
+			List<UserSurveyAccess> resultList = query.getResultList();
+			for (UserSurveyAccess userSurveyAccess : resultList) {
+				userSurveyAccess.setStatus(status);
+				JpaUtil.getEntityManager().merge(userSurveyAccess);
+			}
+			return "Success";
+		} catch (Exception e) {
 
+			e.printStackTrace();
+
+			JpaUtil.getEntityManager().getTransaction().rollback();
+		} finally {
+			JpaUtil.closeEntityManager();
+		}
+		return "failed";
 	}
 
 	@Transactional

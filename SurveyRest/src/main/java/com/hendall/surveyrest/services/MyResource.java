@@ -142,6 +142,16 @@ public class MyResource {
 	
 	@PUT
     @Produces({MediaType.APPLICATION_JSON})
+	@Consumes({MediaType.APPLICATION_JSON})
+	@Path("/approveorreject")
+    public String  approveOrRejectSurvey(@QueryParam("surveyKey") int surveyKey,
+    		@QueryParam("status") String status){
+		UsersServiceHelper  usersServiceHelper = new UsersServiceHelper();
+		return usersServiceHelper.approveOrRejectSurvey(surveyKey, status);
+	}
+	
+	@PUT
+    @Produces({MediaType.APPLICATION_JSON})
 	@Consumes(MediaType.MULTIPART_FORM_DATA)
 	@Path("/file")
     public String  uploadFile( @FormDataParam("file") InputStream uploadedInputStream,
