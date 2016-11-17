@@ -205,9 +205,9 @@ public class UsersServiceHelper {
 
 	}
 
-	public String approveOrRejectSurvey(Integer surveyKey, String status) {
-		if (surveyKey == null || status == null)
-			return "surveykey or status missing";
+	public String approveOrRejectSurvey(Integer surveyKey, Integer userKey, String status) {
+		if (surveyKey == null || userKey == null || status == null)
+			return "surveykey, userKey or status missing";
 		try {
 			JpaUtil.getEntityManager().getTransaction().begin();
 			Query query = JpaUtil.getEntityManager().createQuery(
@@ -216,7 +216,15 @@ public class UsersServiceHelper {
 			query.setParameter("surveyKey", surveyKey);
 			List<UserSurveyAccess> resultList = query.getResultList();
 			for (UserSurveyAccess userSurveyAccess : resultList) {
-				userSurveyAccess.setStatus(status);
+				if (userKey == userSurveyAccess.getUsers().getUserKey()) {
+					if (status == ServiceConstants.STATUS_REVISION_REQUIRED) {
+						userSurveyAccess.setStatus(ServiceConstants.STATUS_REETUREND_FOR_REVISION);
+					} else {
+						userSurveyAccess.setStatus(status);
+					}					
+				} else {
+					userSurveyAccess.setStatus(status);
+				}				
 				JpaUtil.getEntityManager().merge(userSurveyAccess);
 			}
 			return "Success";
@@ -246,17 +254,18 @@ public class UsersServiceHelper {
 			} else {
 				Users superUser = usresList.get(0);
 				Query userAccessQuery = JpaUtil.getEntityManager().createQuery(
-						" Select usa from UserSurveyAccess usa join fetch usa.survey s join fetch usa.users u Where u.userKey=:userKey and s.surveyKey=:surveyKey)",
+						" Select usa from UserSurveyAccess usa join fetch usa.survey s join fetch usa.users u Where usa.status=:status and s.surveyKey=:surveyKey)",
 						UserSurveyAccess.class);
-				userAccessQuery.setParameter("userKey", userKey);
+				userAccessQuery.setParameter("userKey", ServiceConstants.STATUS_IN_PROGRESS);
 				userAccessQuery.setParameter("surveyKey", surveyKey);
 				List<UserSurveyAccess> userSurveyAccessList = userAccessQuery.getResultList();
 				if (CollectionUtils.isEmpty(userSurveyAccessList)) {
 					return "";
 				} else {
-					UserSurveyAccess userSurveyAccess = userSurveyAccessList.get(0);
-					userSurveyAccess.setStatus(ServiceConstants.STATUS_IN_SUBMITTED);
-					JpaUtil.getEntityManager().merge(userSurveyAccess);
+					for (UserSurveyAccess userSurveyAccess: userSurveyAccessList) {
+						userSurveyAccess.setStatus(ServiceConstants.STATUS_IN_SUBMITTED);
+						JpaUtil.getEntityManager().merge(userSurveyAccess);
+					}					
 
 					Query supervisorAccessQuery = JpaUtil.getEntityManager().createQuery(
 							" Select usa from UserSurveyAccess usa join fetch usa.survey s join fetch usa.users u Where u.email=:supervisorEmail and s.surveyKey=:surveyKey)",

@@ -145,9 +145,10 @@ public class MyResource {
 	@Consumes({MediaType.APPLICATION_JSON})
 	@Path("/approveorreject")
     public String  approveOrRejectSurvey(@QueryParam("surveyKey") int surveyKey,
+    		@QueryParam("userKey") int userKey,
     		@QueryParam("status") String status){
 		UsersServiceHelper  usersServiceHelper = new UsersServiceHelper();
-		return usersServiceHelper.approveOrRejectSurvey(surveyKey, status);
+		return usersServiceHelper.approveOrRejectSurvey(surveyKey, userKey, status);
 	}
 	
 	@PUT
