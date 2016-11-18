@@ -138,19 +138,27 @@ public class UsersServiceHelper {
 			Map<String, String> providersMap = new HashMap<String, String>();
 			populateProvidersMap(providersMap);
 			Map<Integer, String> surveyProviderMap = new HashMap<Integer, String>();
+			Map<Integer, String> approverCommentsProviderMap = new HashMap<Integer, String>();
 			if (CollectionUtils.isNotEmpty(survyeKeyList)) {
-				Query answersQuery = JpaUtil.getEntityManager().createQuery(
+				Query providerAnswersQuery = JpaUtil.getEntityManager().createQuery(
 						"Select A From Answers A  join fetch A.userSurveyAccess usa join fetch usa.survey s  Where s.surveyKey in (:surveyKeys) and A.id.htmlControlId=200",
 						Answers.class);
-				answersQuery.setParameter("surveyKeys", survyeKeyList);
-				List<Answers> answersList = answersQuery.getResultList();
-
-				populateSurveyProviderMap(surveyProviderMap, answersList);
+				providerAnswersQuery.setParameter("surveyKeys", survyeKeyList);
+				List<Answers> providersAnswersList = providerAnswersQuery.getResultList();
+				populateSurveyMap(surveyProviderMap, providersAnswersList);
+				
+				Query approverCommentsAnswersQuery = JpaUtil.getEntityManager().createQuery(
+						"Select A From Answers A  join fetch A.userSurveyAccess usa join fetch usa.survey s  Where s.surveyKey in (:surveyKeys) and A.id.htmlControlId=200",
+						Answers.class);
+				approverCommentsAnswersQuery.setParameter("surveyKeys", survyeKeyList);
+				List<Answers> approverCommentsAnswersList = approverCommentsAnswersQuery.getResultList();
+				populateSurveyMap(approverCommentsProviderMap, approverCommentsAnswersList);
+				
 			}
 		
 			for (UserSurveyAccess answers : userSurveyAccessList) {
 				ViewMySurveys viewMySurveys = new ViewMySurveys();
-				ViewMySurveysAssembler.assembleViewMyServeyVo(viewMySurveys, answers, providersMap, surveyProviderMap);
+				ViewMySurveysAssembler.assembleViewMyServeyVo(viewMySurveys, answers, providersMap, surveyProviderMap, approverCommentsProviderMap);
 				if (answers != null && answers.getSurvey()!= null && answers.getSurvey().getSurveyKey() != null) {
 					List<Integer> users = new ArrayList<Integer>();
 					Query otherUsersQuery = JpaUtil.getEntityManager().createQuery(
@@ -177,9 +185,11 @@ public class UsersServiceHelper {
 		return viewMySurveyList;
 	}
 
-	public void populateSurveyProviderMap(Map<Integer, String> map, List<Answers> answersList) {
+	public void populateSurveyMap(Map<Integer, String> map, List<Answers> answersList) {
 		for (Answers answers : answersList) {
-			map.put(answers.getUserSurveyAccess().getSurvey().getSurveyKey(), answers.getAnswer());
+			if (answers.getAnswer()!= null && answers.getUserSurveyAccess().getSurvey().getSurveyKey() != null) {
+				map.put(answers.getUserSurveyAccess().getSurvey().getSurveyKey(), answers.getAnswer());
+			}
 		}
 
 	}
