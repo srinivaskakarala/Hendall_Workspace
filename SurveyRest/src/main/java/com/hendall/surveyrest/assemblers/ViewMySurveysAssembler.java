@@ -16,7 +16,7 @@ public class ViewMySurveysAssembler {
 		viewMySurveys.setSurveyNumber(userSurveyAccess.getSurvey().getSurveyKey().toString());
 		String providerName = providersMap.get(surveyProviderMap.get(userSurveyAccess.getSurvey().getSurveyKey()));
 		viewMySurveys.setSurveyProvider(providerName);
-		String supervisorComments = supervisorCommentsProviderMap.get(surveyProviderMap.get(userSurveyAccess.getSurvey().getSurveyKey()));
+		String supervisorComments = supervisorCommentsProviderMap.get(userSurveyAccess.getSurvey().getSurveyKey());
 		viewMySurveys.setSupervisorComments(supervisorComments);
 		viewMySurveys.setSurveyType(userSurveyAccess.getSurvey().getSurveyTypeLu().getSurveyName());
 		viewMySurveys.setStartDate(userSurveyAccess.getSurvey().getStartDate());
