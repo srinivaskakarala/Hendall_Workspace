@@ -1,6 +1,7 @@
 package com.hendall.surveyrest.helpers;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,7 +10,9 @@ import javax.persistence.Query;
 import javax.transaction.Transactional;
 
 import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.lang3.StringUtils;
 
+import com.hendall.surveyrest.entities.AnswersId;
 import com.hendall.surveyrest.assemblers.UsersAssembler;
 import com.hendall.surveyrest.assemblers.ViewMySurveysAssembler;
 import com.hendall.surveyrest.common.ServiceConstants;
@@ -129,28 +132,28 @@ public class UsersServiceHelper {
 					UserSurveyAccess.class);
 			query.setParameter("userKey", userKey);
 			List<UserSurveyAccess> userSurveyAccessList = query.getResultList();
-			List<Integer> survyeKeyList = new ArrayList<Integer>();
+			List<Integer> surveyKeyList = new ArrayList<Integer>();
 			for (UserSurveyAccess userSurveyAccess : userSurveyAccessList) {
-				if (!survyeKeyList.contains(userSurveyAccess.getSurvey().getSurveyKey()))
-					survyeKeyList.add(userSurveyAccess.getSurvey().getSurveyKey());
+				if (!surveyKeyList.contains(userSurveyAccess.getSurvey().getSurveyKey()))
+					surveyKeyList.add(userSurveyAccess.getSurvey().getSurveyKey());
 			}
 
 			Map<String, String> providersMap = new HashMap<String, String>();
 			populateProvidersMap(providersMap);
 			Map<Integer, String> surveyProviderMap = new HashMap<Integer, String>();
 			Map<Integer, String> approverCommentsProviderMap = new HashMap<Integer, String>();
-			if (CollectionUtils.isNotEmpty(survyeKeyList)) {
+			if (CollectionUtils.isNotEmpty(surveyKeyList)) {
 				Query providerAnswersQuery = JpaUtil.getEntityManager().createQuery(
 						"Select A From Answers A  join fetch A.userSurveyAccess usa join fetch usa.survey s  Where s.surveyKey in (:surveyKeys) and A.id.htmlControlId=200",
 						Answers.class);
-				providerAnswersQuery.setParameter("surveyKeys", survyeKeyList);
+				providerAnswersQuery.setParameter("surveyKeys", surveyKeyList);
 				List<Answers> providersAnswersList = providerAnswersQuery.getResultList();
 				populateSurveyMap(surveyProviderMap, providersAnswersList);
 				
 				Query approverCommentsAnswersQuery = JpaUtil.getEntityManager().createQuery(
-						"Select A From Answers A  join fetch A.userSurveyAccess usa join fetch usa.survey s  Where s.surveyKey in (:surveyKeys) and A.id.htmlControlId=200",
+						"Select A From Answers A  join fetch A.userSurveyAccess usa join fetch usa.survey s  Where s.surveyKey in (:surveyKeys) and A.id.htmlControlId=-3",
 						Answers.class);
-				approverCommentsAnswersQuery.setParameter("surveyKeys", survyeKeyList);
+				approverCommentsAnswersQuery.setParameter("surveyKeys", surveyKeyList);
 				List<Answers> approverCommentsAnswersList = approverCommentsAnswersQuery.getResultList();
 				populateSurveyMap(approverCommentsProviderMap, approverCommentsAnswersList);
 				
@@ -214,8 +217,33 @@ public class UsersServiceHelper {
 		}
 
 	}
+	
+private void saveComments(String comments, Integer userSruveyKey)
+	{
+		try {
+			JpaUtil.getEntityManager().getTransaction().begin();
+			AnswersId answersId = new AnswersId();
+			answersId.setHtmlControlId(ServiceConstants.INFECTION_CONTROL_SUPERVISOR_COMMENTS_ID.intValue());
+			answersId.setUserSurverAccessAnswersKey(userSruveyKey.intValue());
+			Answers answer = new Answers();
+			answer.setAnswer(comments);
+			answer.setId(answersId);
+			answer.setCreateDate(new Date());
+			answer.setCreateUser(Integer.valueOf(-1));
+			if (StringUtils.isBlank(comments)) {
+				JpaUtil.getEntityManager().remove(answer);
+			} else {
+				JpaUtil.getEntityManager().merge(answer);
+			}
+		} catch (Exception e) {	
+			e.printStackTrace();	
+			JpaUtil.getEntityManager().getTransaction().rollback();
+		} finally {
+			JpaUtil.closeEntityManager();
+		}
+	}
 
-	public String approveOrRejectSurvey(Integer surveyKey, Integer userKey, String status) {
+	public String approveOrRejectSurvey(Integer surveyKey, Integer userKey, String status, String supervisorComments) {
 		if (surveyKey == null || userKey == null || status == null)
 			return "surveykey, userKey or status missing";
 		try {
@@ -226,16 +254,21 @@ public class UsersServiceHelper {
 			query.setParameter("surveyKey", surveyKey);
 			List<UserSurveyAccess> resultList = query.getResultList();
 			for (UserSurveyAccess userSurveyAccess : resultList) {
-				if (userKey == userSurveyAccess.getUsers().getUserKey()) {
-					if (status == ServiceConstants.STATUS_REVISION_REQUIRED) {
-						userSurveyAccess.setStatus(ServiceConstants.STATUS_REETUREND_FOR_REVISION);
+				if ("SAVE".equals(status)) {
+					saveComments(supervisorComments, userSurveyAccess.getUserSurveyKey());
+				} else {
+					if (userKey == userSurveyAccess.getUsers().getUserKey()) {
+						if (ServiceConstants.STATUS_REVISION_REQUIRED.equals(status)) {
+							userSurveyAccess.setStatus(ServiceConstants.STATUS_REETUREND_FOR_REVISION);
+						} else {
+							userSurveyAccess.setStatus(status);
+						}					
 					} else {
 						userSurveyAccess.setStatus(status);
 					}					
-				} else {
-					userSurveyAccess.setStatus(status);
-				}				
-				JpaUtil.getEntityManager().merge(userSurveyAccess);
+					JpaUtil.getEntityManager().merge(userSurveyAccess);
+					saveComments(supervisorComments, userSurveyAccess.getUserSurveyKey());
+				}
 			}
 			return "Success";
 		} catch (Exception e) {

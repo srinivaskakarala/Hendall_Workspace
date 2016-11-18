@@ -146,9 +146,10 @@ public class MyResource {
 	@Path("/approveorreject")
     public String  approveOrRejectSurvey(@QueryParam("surveyKey") int surveyKey,
     		@QueryParam("userKey") int userKey,
-    		@QueryParam("status") String status){
+    		@QueryParam("status") String status,
+    		@QueryParam("comments") String supervisorComments){
 		UsersServiceHelper  usersServiceHelper = new UsersServiceHelper();
-		return usersServiceHelper.approveOrRejectSurvey(surveyKey, userKey, status);
+		return usersServiceHelper.approveOrRejectSurvey(surveyKey, userKey, status, supervisorComments);
 	}
 	
 	@PUT
