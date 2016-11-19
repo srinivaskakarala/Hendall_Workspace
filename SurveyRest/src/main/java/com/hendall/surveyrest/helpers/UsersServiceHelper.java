@@ -221,7 +221,6 @@ public class UsersServiceHelper {
 private void saveComments(String comments, Integer userSruveyKey)
 	{
 		try {
-			JpaUtil.getEntityManager().getTransaction().begin();
 			AnswersId answersId = new AnswersId();
 			answersId.setHtmlControlId(ServiceConstants.INFECTION_CONTROL_SUPERVISOR_COMMENTS_ID.intValue());
 			answersId.setUserSurverAccessAnswersKey(userSruveyKey.intValue());
@@ -231,15 +230,14 @@ private void saveComments(String comments, Integer userSruveyKey)
 			answer.setCreateDate(new Date());
 			answer.setCreateUser(Integer.valueOf(-1));
 			if (StringUtils.isBlank(comments)) {
-				JpaUtil.getEntityManager().remove(answer);
+				//change this to check if the record exists before trying to delete.
+				JpaUtil.getEntityManager().remove(JpaUtil.getEntityManager().merge(answer));
 			} else {
 				JpaUtil.getEntityManager().merge(answer);
 			}
 		} catch (Exception e) {	
 			e.printStackTrace();	
 			JpaUtil.getEntityManager().getTransaction().rollback();
-		} finally {
-			JpaUtil.closeEntityManager();
 		}
 	}
 
@@ -249,7 +247,7 @@ private void saveComments(String comments, Integer userSruveyKey)
 		try {
 			JpaUtil.getEntityManager().getTransaction().begin();
 			Query query = JpaUtil.getEntityManager().createQuery(
-					"Select u from UserSurveyAccess u join fetch u.survey s where s.surveyKey=:surveyKey",
+					"Select usa from UserSurveyAccess usa join fetch usa.survey s join fetch usa.users u where s.surveyKey=:surveyKey",
 					UserSurveyAccess.class);
 			query.setParameter("surveyKey", surveyKey);
 			List<UserSurveyAccess> resultList = query.getResultList();
@@ -299,7 +297,7 @@ private void saveComments(String comments, Integer userSruveyKey)
 				Query userAccessQuery = JpaUtil.getEntityManager().createQuery(
 						" Select usa from UserSurveyAccess usa join fetch usa.survey s join fetch usa.users u Where usa.status=:status and s.surveyKey=:surveyKey)",
 						UserSurveyAccess.class);
-				userAccessQuery.setParameter("userKey", ServiceConstants.STATUS_IN_PROGRESS);
+				userAccessQuery.setParameter("status", ServiceConstants.STATUS_IN_PROGRESS);
 				userAccessQuery.setParameter("surveyKey", surveyKey);
 				List<UserSurveyAccess> userSurveyAccessList = userAccessQuery.getResultList();
 				if (CollectionUtils.isEmpty(userSurveyAccessList)) {
