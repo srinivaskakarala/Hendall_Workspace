@@ -428,6 +428,32 @@ private void saveComments(String comments, Integer userSruveyKey)
 		}
 		return getUsersForSurvey(surveyersModel.getSurveyKey());
 	}
+
+	public void delteUsersinSurvey(SurveyersModel surveyersModel) {
+		if (surveyersModel.getSurveyKey() == null && surveyersModel.getUserKeys().isEmpty())
+			return;
+		int surveyKey = surveyersModel.getSurveyKey();
+		for (Integer userKey : surveyersModel.getUserKeys()) {
+			try {
+				JpaUtil.getEntityManager().getTransaction().begin();
+				JpaUtil.getEntityManager()
+						.createNativeQuery(
+								"Delete from answers where User_Surver_Access_Answers_Key in (Select user_survey_key from user_survey_access where survey_key = "
+										+ surveyKey + " and user_key = "+userKey+")")
+						.executeUpdate();
+				JpaUtil.getEntityManager()
+						.createNativeQuery("Delete from user_survey_access where survey_key = " + surveyKey +" and user_key = "+userKey )
+						.executeUpdate();
+				JpaUtil.getEntityManager().getTransaction().commit();
+			} catch (Exception e) {
+				e.printStackTrace();
+				JpaUtil.getEntityManager().getTransaction().rollback();
+			} finally {
+				JpaUtil.closeEntityManager();
+			}
+		}
+		
+	}
 		
 
 }
