@@ -180,9 +180,9 @@ public class MyResource {
 		return usersServiceHelper.addUserstoSurvey(surveyersModel);
 	}
 	
-	@DELETE
+	@PUT
 	@Consumes({MediaType.APPLICATION_JSON})
-	@Path("/surveyUsers")
+	@Path("/deleteSurveyUsers")
 	public void deleteUsersinSurvey(SurveyersModel surveyersModel){		
 		UsersServiceHelper  usersServiceHelper = new UsersServiceHelper();		
 		usersServiceHelper.delteUsersinSurvey(surveyersModel);
