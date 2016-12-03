@@ -153,6 +153,7 @@ public class QuestionAnswerHelper {
 						    	DifferentUserAnswer differentUserAnswer = new DifferentUserAnswer();
 							    differentUserAnswer.setUser(otherUserKey);						    
 							    differentUserAnswer.setAnswer(otherUserAnswerMap.get(answer.getHtmlControlId()).getAnswer());
+							    differentUserAnswer.setAnswerDate(answer.getAnswerDate());
 							    differentUserAnswerList.add(differentUserAnswer);
 						    }
 						    

@@ -1,11 +1,13 @@
 package com.hendall.surveyrest.datamodel;
 
+import java.util.Date;
 import java.util.List;
 
 public class DifferentUserAnswer {
 	
 	private Integer user;
 	private String answer;
+	private Date answerDate;
 	//private List<AnswerReadOnly> readOnlyAnswerList;
 	
 	public Integer getUser() {
@@ -26,5 +28,10 @@ public class DifferentUserAnswer {
 //	public void setReadOnlyAnswerList(List<AnswerReadOnly> readOnlyAnswerList) {
 //		this.readOnlyAnswerList = readOnlyAnswerList;
 //	}
-
+	public Date getAnswerDate() {
+		return answerDate;
+	}
+	public void setAnswerDate(Date answerDate) {
+		this.answerDate = answerDate;
+	}
 }
