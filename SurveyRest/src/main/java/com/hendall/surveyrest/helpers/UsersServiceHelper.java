@@ -328,7 +328,7 @@ private void saveComments(String comments, Integer userSruveyKey)
 					supervisorAccess.setUsers(superUser);
 					supervisorAccess.setStatus(ServiceConstants.STATUS_IN_PENDING_REVIEW);
 					JpaUtil.getEntityManager().merge(supervisorAccess);
-					// EmailService emailService = new EmailService();
+					EmailService emailService = new EmailService();
 					// emailService.sendEmail(ServiceConstants.EMAIL_FROM_ADDRESS,
 					// supervisorEmail,
 					// ServiceConstants.EMAIL_SUBJECT,
@@ -409,11 +409,11 @@ private void saveComments(String comments, Integer userSruveyKey)
 						supervisorAccess.setUsers(superUser);
 						supervisorAccess.setStatus(ServiceConstants.STATUS_IN_PROGRESS);
 						JpaUtil.getEntityManager().merge(supervisorAccess);
-						// EmailService emailService = new EmailService();
-						// emailService.sendEmail(ServiceConstants.EMAIL_FROM_ADDRESS,
-						// supervisorEmail,
-						// ServiceConstants.EMAIL_SUBJECT,
-						// ServiceConstants.EMAIL_MESSAGE);
+						EmailService emailService = new EmailService();
+						emailService.sendEmail(ServiceConstants.EMAIL_FROM_ADDRESS,
+						superUser.getEmail(),
+						ServiceConstants.EMAIL_SUBJECT,
+						ServiceConstants.EMAIL_MESSAGE);
 						}
 					}
 				}

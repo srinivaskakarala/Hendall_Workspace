@@ -41,6 +41,7 @@ public class AnswersAssembler {
 
 		entity.getId().setHtmlControlId(vo.getHtmlControlId());
 		entity.setCreateDate(new Date());
+		entity.setModifyDate(new Date());
 		//entity.setCreateUser(10);
 		// answersId.setUserKey(10);
 		// entity.setId(answersId);

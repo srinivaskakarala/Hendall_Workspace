@@ -153,7 +153,7 @@ public class QuestionAnswerHelper {
 						    	DifferentUserAnswer differentUserAnswer = new DifferentUserAnswer();
 							    differentUserAnswer.setUser(otherUserKey);						    
 							    differentUserAnswer.setAnswer(otherUserAnswerMap.get(answer.getHtmlControlId()).getAnswer());
-							    differentUserAnswer.setAnswerDate(answer.getAnswerDate());
+							    differentUserAnswer.setAnswerDate(otherUserAnswerMap.get(answer.getHtmlControlId()).getModifyDate());
 							    differentUserAnswerList.add(differentUserAnswer);
 						    }
 						    
@@ -288,6 +288,7 @@ public class QuestionAnswerHelper {
 							answersId.setUserSurverAccessAnswersKey(userSurveyKey);
 							entity.setId(answersId);
 							entity.setCreateUser(userKey);
+							entity.setModifyUser(userKey);
 	
 							if (!answer.isDefaultVisible()) {
 								answer.setAnswer(null);
