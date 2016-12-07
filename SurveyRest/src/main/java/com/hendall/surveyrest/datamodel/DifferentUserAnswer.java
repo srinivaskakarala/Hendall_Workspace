@@ -7,7 +7,7 @@ public class DifferentUserAnswer {
 	
 	private Integer user;
 	private String answer;
-	private Date answerDate;
+	private String answerDate;
 	//private List<AnswerReadOnly> readOnlyAnswerList;
 	
 	public Integer getUser() {
@@ -28,10 +28,10 @@ public class DifferentUserAnswer {
 //	public void setReadOnlyAnswerList(List<AnswerReadOnly> readOnlyAnswerList) {
 //		this.readOnlyAnswerList = readOnlyAnswerList;
 //	}
-	public Date getAnswerDate() {
+	public String getAnswerDate() {
 		return answerDate;
 	}
-	public void setAnswerDate(Date answerDate) {
+	public void setAnswerDate(String answerDate) {
 		this.answerDate = answerDate;
 	}
 }
