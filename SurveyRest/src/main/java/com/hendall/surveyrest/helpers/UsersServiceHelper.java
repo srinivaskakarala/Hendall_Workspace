@@ -16,6 +16,7 @@ import com.hendall.surveyrest.entities.AnswersId;
 import com.hendall.surveyrest.assemblers.UsersAssembler;
 import com.hendall.surveyrest.assemblers.ViewMySurveysAssembler;
 import com.hendall.surveyrest.common.ServiceConstants;
+import com.hendall.surveyrest.datamodel.SurveyerUserModel;
 import com.hendall.surveyrest.datamodel.SurveyersModel;
 import com.hendall.surveyrest.datamodel.UserSession;
 import com.hendall.surveyrest.datamodel.ViewMySurveys;
@@ -328,11 +329,21 @@ private void saveComments(String comments, Integer userSruveyKey)
 					supervisorAccess.setUsers(superUser);
 					supervisorAccess.setStatus(ServiceConstants.STATUS_IN_PENDING_REVIEW);
 					JpaUtil.getEntityManager().merge(supervisorAccess);
+					Query assignedUserQuery = JpaUtil.getEntityManager().createQuery(" Select u from Users u Where u.userKey=:userKey)", Users.class);
+					assignedUserQuery.setParameter("userKey", userKey);
+					List<Users> assignedUsersList = userQuery.getResultList();
+					String name = null;
+					if (!CollectionUtils.isEmpty(usresList)) {
+						Users assignedUser = assignedUsersList.get(0);
+						String firstName = assignedUser.getFirstName().substring(0,1).toUpperCase() + assignedUser.getFirstName().substring(1).toLowerCase();
+						String lastName = assignedUser.getLastName().substring(0,1).toUpperCase() + assignedUser.getLastName().substring(1).toLowerCase();
+						name = firstName+" "+lastName;
+					}
 					EmailService emailService = new EmailService();
-					// emailService.sendEmail(ServiceConstants.EMAIL_FROM_ADDRESS,
-					// supervisorEmail,
-					// ServiceConstants.EMAIL_SUBJECT,
-					// ServiceConstants.EMAIL_MESSAGE);
+					 emailService.sendEmail(ServiceConstants.EMAIL_FROM_ADDRESS,
+					 supervisorEmail,
+					 ServiceConstants.EMAIL_SUBJECT,
+					 surveyKey+" "+ServiceConstants.EMAIL_MESSAGE+" "+name);
 
 				}
 			}
@@ -350,8 +361,8 @@ private void saveComments(String comments, Integer userSruveyKey)
 
 	public SurveyersModel getUsersForSurvey(Integer surveyKey) {
 		SurveyersModel surveyersModel = new SurveyersModel();
-		List<Integer> users = new ArrayList<Integer>();
-		surveyersModel.setUserKeys(users);
+		List<SurveyerUserModel> surveyerUserModelList = new ArrayList<SurveyerUserModel>();
+		surveyersModel.setSurveyerUserModels(surveyerUserModelList);
 		if (surveyKey == null)
 			return surveyersModel;
 		try {
@@ -364,7 +375,19 @@ private void saveComments(String comments, Integer userSruveyKey)
 			List<UserSurveyAccess> resultList = query.getResultList();
 				if (resultList!= null && !resultList.isEmpty()){
 					for (UserSurveyAccess userSurveyAccess:resultList){
-						users.add(userSurveyAccess.getUsers().getUserKey());
+						SurveyerUserModel surveyerUserModel = new SurveyerUserModel();
+						surveyerUserModel.setUserKey(userSurveyAccess.getUsers().getUserKey());
+						Query answersQuery = JpaUtil.getEntityManager().createQuery(
+								"Select a from Answers a join fetch a.userSurveyAccess usa where usa.userSurveyKey=:userSurveyAccessKey",
+								Answers.class);
+						answersQuery.setParameter("userSurveyAccessKey", userSurveyAccess.getUserSurveyKey());
+						List<Answers> answersList = answersQuery.getResultList();
+						if (answersList.isEmpty() || answersList == null) {
+							surveyerUserModel.setDelete(true);
+						} else {
+							surveyerUserModel.setDelete(false);
+						}						
+						surveyerUserModelList.add(surveyerUserModel);
 						}
 				}						
 			} catch (Exception e) {
@@ -381,16 +404,16 @@ private void saveComments(String comments, Integer userSruveyKey)
 
 	public SurveyersModel addUserstoSurvey(SurveyersModel surveyersModel) {
 		List<Integer> userkeys = new ArrayList<Integer>();
-		if (surveyersModel.getSurveyKey() == null || surveyersModel.getUserKeys() == null || surveyersModel.getUserKeys().isEmpty())
+		if (surveyersModel.getSurveyKey() == null || surveyersModel.getSurveyerUserModels() == null || surveyersModel.getSurveyerUserModels().isEmpty())
 			return surveyersModel;
 		try {
 			JpaUtil.getEntityManager().getTransaction().begin();
 			
-			for (Integer userKey:surveyersModel.getUserKeys()) {
+			for (SurveyerUserModel surveyerUserModel:surveyersModel.getSurveyerUserModels()) {
 				
 				Query userQuery = JpaUtil.getEntityManager()
 						.createQuery(" Select u from Users u Where u.userKey=:userKey)", Users.class);
-				userQuery.setParameter("userKey", userKey);
+				userQuery.setParameter("userKey", surveyerUserModel.getUserKey());
 				List<Users> usresList = userQuery.getResultList();
 				if (!CollectionUtils.isEmpty(usresList)) {
 					Users superUser = usresList.get(0);
@@ -405,15 +428,16 @@ private void saveComments(String comments, Integer userSruveyKey)
 						
 						UserSurveyAccess supervisorAccess = new UserSurveyAccess();
 						survey.setSurveyKey(surveyersModel.getSurveyKey());
+						supervisorAccess.setModifyDate(new Date());
 						supervisorAccess.setSurvey(survey);
 						supervisorAccess.setUsers(superUser);
-						supervisorAccess.setStatus(ServiceConstants.STATUS_IN_PROGRESS);
+						supervisorAccess.setStatus(ServiceConstants.STATUS_IN_PROGRESS);						
 						JpaUtil.getEntityManager().merge(supervisorAccess);
-						EmailService emailService = new EmailService();
-						emailService.sendEmail(ServiceConstants.EMAIL_FROM_ADDRESS,
-						superUser.getEmail(),
-						ServiceConstants.EMAIL_SUBJECT,
-						ServiceConstants.EMAIL_MESSAGE);
+//						EmailService emailService = new EmailService();
+//						emailService.sendEmail(ServiceConstants.EMAIL_FROM_ADDRESS,
+//						superUser.getEmail(),
+//						ServiceConstants.EMAIL_SUBJECT,
+//						ServiceConstants.EMAIL_MESSAGE);
 						}
 					}
 				}
@@ -430,11 +454,12 @@ private void saveComments(String comments, Integer userSruveyKey)
 	}
 
 	public void delteUsersinSurvey(SurveyersModel surveyersModel) {
-		if (surveyersModel.getSurveyKey() == null && surveyersModel.getUserKeys().isEmpty())
+		if (surveyersModel.getSurveyKey() == null && surveyersModel.getSurveyerUserModels().isEmpty())
 			return;
 		int surveyKey = surveyersModel.getSurveyKey();
-		for (Integer userKey : surveyersModel.getUserKeys()) {
+		for (SurveyerUserModel surveyerUserModel : surveyersModel.getSurveyerUserModels()) {
 			try {
+				Integer userKey = surveyerUserModel.getUserKey();
 				JpaUtil.getEntityManager().getTransaction().begin();
 				JpaUtil.getEntityManager()
 						.createNativeQuery(

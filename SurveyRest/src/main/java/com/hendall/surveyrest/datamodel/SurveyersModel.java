@@ -6,7 +6,7 @@ import java.util.List;
 public class SurveyersModel {
 	
 	private Integer surveyKey;
-	private List<Integer> userKeys;
+	private List<SurveyerUserModel> surveyerUserModels;
 	
 	public Integer getSurveyKey() {
 		return surveyKey;
@@ -15,14 +15,14 @@ public class SurveyersModel {
 		this.surveyKey = surveyKey;
 	}
 	
-	public List<Integer> getUserKeys() {
-		if (userKeys == null) {
-			userKeys = new ArrayList<Integer>();
+	public List<SurveyerUserModel> getSurveyerUserModels() {
+		if (surveyerUserModels == null) {
+			surveyerUserModels = new ArrayList<SurveyerUserModel>();
 		}
-		return userKeys;
+		return surveyerUserModels;
 	}
-	public void setUserKeys(List<Integer> userKeys) {
-		this.userKeys = userKeys;
+	public void setSurveyerUserModels(List<SurveyerUserModel> surveyerUserModels) {
+		this.surveyerUserModels = surveyerUserModels;
 	}
 
 }
