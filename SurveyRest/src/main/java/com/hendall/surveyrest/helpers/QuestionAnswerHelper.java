@@ -284,7 +284,7 @@ public class QuestionAnswerHelper {
 			for (Section surveyQuestionSection : surverQuestionsList) {
 				for (Question surveyQuestionAnswer : surveyQuestionSection.getSurveyQuestionAnswerList()) {
 					for (Answer answer : surveyQuestionAnswer.getAnswersList()) {
-						if (!(answer.getAnswer()==null && answer.getAnswerDate()==null && answer.getAnswersList().isEmpty())) {
+//						if (!(answer.getAnswer()==null && answer.getAnswerDate()==null && answer.getAnswersList().isEmpty())) {
 							if (answer.getHtmlControlId() == ServiceConstants.INFECTION_CONTROL_SUPERVISOR_COMMENTS_ID)
 								continue;
 							Answers entity = new Answers();
@@ -304,7 +304,7 @@ public class QuestionAnswerHelper {
 								entitiesList.add(entity);
 							}
 						
-						}
+//						}
 
 					}
 				}
