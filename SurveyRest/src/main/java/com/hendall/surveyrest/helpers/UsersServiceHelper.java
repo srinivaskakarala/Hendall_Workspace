@@ -479,6 +479,38 @@ private void saveComments(String comments, Integer userSruveyKey)
 		}
 		
 	}
+	
+public Boolean isPrimaryUser(Integer surveyKey, int userKey) {
 		
+		try {
+			JpaUtil.getEntityManager().getTransaction().begin();
+			Query query = JpaUtil.getEntityManager().createQuery(
+					"Select usa from UserSurveyAccess usa join fetch usa.survey s join fetch usa.users u where s.surveyKey=:surveyKey",
+					UserSurveyAccess.class);
+			query.setParameter("surveyKey", surveyKey);
+			List<UserSurveyAccess> resultList = query.getResultList();
+			Integer mainUserSurveyAccessKey = null;
+			if (resultList!= null && !resultList.isEmpty()){
+				for (UserSurveyAccess userSurveyAccess:resultList){
+					if (userKey == userSurveyAccess.getUsers().getUserKey()) {
+						mainUserSurveyAccessKey = userSurveyAccess.getUserSurveyKey();
+					}
+				}				
+				for (UserSurveyAccess userSurveyAccess:resultList){
+					if (mainUserSurveyAccessKey > userSurveyAccess.getUserSurveyKey()) {
+						return false;
+					}
+				}
+				return true;
+			}
+			} catch (Exception e) {
+				e.printStackTrace();
+				JpaUtil.getEntityManager().getTransaction().rollback();
+			} finally {
+				JpaUtil.closeEntityManager();
+			}
+		
+		return null;
+	}
 
 }

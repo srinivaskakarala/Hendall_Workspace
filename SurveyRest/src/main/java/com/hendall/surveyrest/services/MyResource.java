@@ -187,4 +187,13 @@ public class MyResource {
 		UsersServiceHelper  usersServiceHelper = new UsersServiceHelper();		
 		usersServiceHelper.delteUsersinSurvey(surveyersModel);
 	}
+	
+	@GET
+    @Produces({MediaType.APPLICATION_JSON})
+	@Path("/primaryuser")
+    public Boolean  isPrimaryUser(@QueryParam("surveyKey") Integer surveyKey,
+    		@QueryParam("userKey") int userKey){
+		UsersServiceHelper  usersServiceHelper = new UsersServiceHelper();
+		return usersServiceHelper.isPrimaryUser(surveyKey, userKey);
+	}
 }
